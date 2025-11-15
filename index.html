@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajay Yadav - Digital Product Lead</title>
-    <!-- Use the "Manrope" font for a more stylish, elegant feel -->
+    <!-- Use the "Jost" font (Futura-like) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,8 +15,8 @@
     <style>
         /* Custom styles to extend Tailwind */
         body {
-            /* Switched to Manrope */
-            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            /* Switched to Jost */
+            font-family: 'Jost', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             /* Define our dark theme colors */
             --color-bg: #111827; /* Tailwind gray-900 */
             --color-bg-secondary: #1F2937; /* Tailwind gray-800 */
@@ -91,21 +91,39 @@
             scroll-behavior: smooth;
         }
 
-        /* Nav link styling */
+        /* --- NEW: Animated Nav Link --- */
         .nav-link {
             padding: 1rem 1.5rem;
-            border-bottom: 4px solid transparent;
             color: var(--color-text-muted);
             font-weight: 500;
-            transition: all 0.2s ease-in-out;
+            transition: color 0.2s ease-in-out;
+            position: relative; /* Needed for the pseudo-element */
+            border-bottom: none; /* Remove old border */
         }
         .nav-link:hover {
             color: var(--color-text);
         }
+        /* This is the animated underline */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: var(--color-primary);
+            transform: scaleX(0); /* Start hidden */
+            transform-origin: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        /* Animate in when active */
+        .nav-link.active::after {
+            transform: scaleX(1);
+        }
         .nav-link.active {
             color: var(--color-primary);
-            border-bottom-color: var(--color-primary);
         }
+
 
         /* Page section styling */
         .page-section {
@@ -118,13 +136,70 @@
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+
+        /* Endorsement Slider */
+        .endorsement-slide {
+            min-width: 100%;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Project/Education link styling */
+        .linkable-title {
+            transition: color 0.2s ease-in-out;
+        }
+        .linkable-title:hover {
+            color: var(--color-secondary);
+        }
+        
+        /* --- NEW: Keyframes for Background Glows --- */
+        @keyframes animate-glow1 {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(50px, 100px) scale(1.2);
+            }
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+        @keyframes animate-glow2 {
+            0% {
+                transform: translate(0, 0) scale(1.2);
+            }
+            50% {
+                transform: translate(-100px, -50px) scale(1);
+            }
+            100% {
+                transform: translate(0, 0) scale(1.2);
+            }
+        }
+        .glow-1 {
+            animation: animate-glow1 20s infinite alternate ease-in-out;
+        }
+        .glow-2 {
+            animation: animate-glow2 18s infinite alternate ease-in-out;
+        }
+
+        /* --- NEW: Styles for Scroll-Triggered Animations --- */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
     </style>
 </head>
 <body class="bg-theme-bg text-theme-text antialiased relative overflow-x-hidden">
 
     <!-- Background Glows -->
-    <div class="fixed top-1/4 left-0 w-96 h-96 md:w-[500px] md:h-[500px] bg-theme-primary/10 rounded-full filter blur-[150px] -z-10 opacity-70"></div>
-    <div class="fixed bottom-1/4 right-0 w-96 h-96 md:w-[500px] md:h-[500px] bg-theme-secondary/10 rounded-full filter blur-[150px] -z-10 opacity-70"></div>
+    <!-- NEW: Added animation classes 'glow-1' and 'glow-2' -->
+    <div class="glow-1 fixed top-1/4 left-0 w-96 h-96 md:w-[500px] md:h-[500px] bg-theme-primary/10 rounded-full filter blur-[150px] -z-10 opacity-70"></div>
+    <div class="glow-2 fixed bottom-1/4 right-0 w-96 h-96 md:w-[500px] md:h-[500px] bg-theme-secondary/10 rounded-full filter blur-[150px] -z-10 opacity-70"></div>
 
     <!-- ========== NAVIGATION BAR ========== -->
     <nav class="bg-theme-secondary/80 backdrop-blur-lg sticky top-0 z-50 border-b border-theme-border">
@@ -145,20 +220,19 @@
         <section id="page-home" class="page-section">
             
             <!-- Hero Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center py-12">
+            <!-- NEW: Added 'animate-on-scroll' for initial fade-in -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center py-12 animate-on-scroll">
                 <!-- Left Column: Photo -->
                 <div class="flex justify-center md:justify-start">
                     <!-- 
-                      TODO: Ajay, replace this placeholder. 
-                      1. Upload a professional photo to your GitHub repository.
-                      2. Name it 'profile.jpg'.
-                      3. Change the 'src' below from the placehold.co link to just 'profile.jpg'.
+                      UPDATE: Changed src to 'profile.jpg'
                     -->
                     <img 
                       id="profile-img"
-                      src="https://placehold.co/200x200/8B5CF6/1F2937?text=AY&font=manrope" 
+                      src="profile.jpg" 
                       alt="Ajay Yadav" 
-                      class="rounded-full w-48 h-48 md:w-56 md:h-56 object-cover border-4 border-theme-primary shadow-lg cursor-pointer transition-all duration-300 hover:scale-105"
+                      onerror="this.src='https://placehold.co/200x200/8B5CF6/1F2937?text=AY&font=jost'"
+                      class="clickable-lightbox rounded-full w-48 h-48 md:w-56 md:h-56 object-cover border-4 border-theme-primary shadow-lg cursor-pointer transition-all duration-300 hover:scale-105"
                     >
                 </div>
 
@@ -171,81 +245,350 @@
             </div>
 
             <!-- Value Proposition -->
-            <div class="py-8">
-                <h2 class="text-3xl font-bold text-white text-center mb-6">My Value Proposition</h2>
+            <!-- NEW: Added 'animate-on-scroll' -->
+            <div class="py-8 animate-on-scroll">
+                <h2 class="text-3xl font-bold text-white text-center mb-6">A Product Leader Who Delivers Growth & Efficiency.</h2>
                 <p class="text-lg md:text-xl text-theme-text max-w-3xl mx-auto text-center">
-                    Data-driven Product Manager with 4+ years of experience leading the end-to-end product lifecycle.
-                    I specialize in <strong class="text-theme-secondary">Product Strategy</strong>, <strong class="text-theme-secondary">User Research</strong>, and <strong class="text-theme-secondary">Data Analysis</strong>, and have led major initiatives
-                    resulting in <strong class="highlight-text font-semibold">10x growth in MAU</strong> and a <strong class="highlight-text font-semibold">15% boost in operational efficiency</strong>.
+                   With 4+ years of end-to-end <strong class="text-theme-secondary">Product Leadership</strong>, I have a track record of shipping products that move the needle. I led the UI/UX overhaul that resulted in <strong class="text-theme-secondary">10x MAU growth</strong>
+                    and developed the <strong class="text-theme-secondary">GTM strategy</strong> that drove a <strong class="text-theme-secondary">15% boost</strong> in <strong class="text-theme-secondary">operational efficiency.</strong> I thrive on solving complex user problems and delivering measurable value.
                 </p>
             </div>
 
             <!-- Skills & Tools (Moved to Home) -->
             <section id="skills" class="py-16">
-                <h2 class="text-3xl font-bold text-white text-center mb-12">Skills & Tools</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- NEW: Tools Section -->
+                <!-- NEW: Added 'animate-on-scroll' -->
+                <div class="animate-on-scroll">
+                    <h2 class="text-3xl font-bold text-white text-center mb-12">Tools I Use</h2>
+                    <div class="flex flex-wrap justify-center gap-4 md:gap-6 mb-16 pb-8">
+                        
+                        <!-- Tool Logo Item 1: Azure DevOps -->
+                        <div class="relative group flex-shrink-0 hover:z-10">
+                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-200">
+                                <!-- UPDATE: Changed src to 'tool-azure.png' -->
+                                <img src="tool-azure.png" alt="Azure DevOps" class="w-full h-full object-cover rounded-full p-3">
+                            </div>
+                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Azure DevOps</span>
+                        </div>
+                        
+                        <!-- Tool Logo Item 2: Jira -->
+                        <div class="relative group flex-shrink-0 hover:z-10">
+                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-200">
+                                <!-- UPDATE: Changed src to 'tool-jira.png' -->
+                                <img src="tool-jira.png" alt="Jira" class="w-full h-full object-cover rounded-full p-3">
+                            </div>
+                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Jira</span>
+                        </div>
+
+                        <!-- Tool Logo Item 3: Figma -->
+                        <div class="relative group flex-shrink-0 hover:z-10">
+                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-200">
+                                <!-- UPDATE: Changed src to 'tool-figma.png' -->
+                                <img src="tool-figma.png" alt="Figma" class="w-full h-full object-cover rounded-full p-3">
+                            </div>
+                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Figma</span>
+                        </div>
+
+                        <!-- Tool Logo Item 4: SQL -->
+                        <div class="relative group flex-shrink-0 hover:z-10">
+                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-200">
+                                <!-- UPDATE: Changed src to 'tool-sql.png' -->
+                                <img src="tool-sql.png" alt="SQL" class="w-full h-full object-cover rounded-full p-3">
+                            </div>
+                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">SQL</span>
+                        </div>
+
+                        <!-- Tool Logo Item 5: Miro -->
+                        <div class="relative group flex-shrink-0 hover:z-10">
+                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-200">
+                                <!-- UPDATE: Changed src to 'tool-miro.png' -->
+                                <img src="tool-miro.png" alt="Miro" class="w-full h-full object-cover rounded-full p-3">
+                            </div>
+                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Miro</span>
+                        </div>
+
+                        <!-- Tool Logo Item 6: Microsoft 365 -->
+                        <div class="relative group flex-shrink-0 hover:z-10">
+                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-200">
+                                <!-- UPDATE: Changed src to 'tool-M365.png' -->
+                                <img src="tool-M365.png" alt="Microsoft 365" class="w-full h-full object-cover rounded-full p-3">
+                            </div>
+                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Microsoft 365</span>
+                        </div>
+
+                        <!-- Tool Logo Item 7: Google Analytics -->
+                        <div class="relative group flex-shrink-0 hover:z-10">
+                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-200">
+                                <!-- UPDATE: Changed src to 'tool-analytics.png' -->
+                                <img src="tool-analytics.png" alt="Google Analytics" class="w-full h-full object-cover rounded-full p-3">
+                            </div>
+                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Google Analytics</span>
+                        </div>
+
+                        <!-- Tool Logo Item 8: Power Apps -->
+                        <div class="relative group flex-shrink-0 hover:z-10">
+                            <div class="tool-logo glass-card w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-200">
+                                <!-- UPDATE: Changed src to 'tool-powerapps.png' -->
+                                <img src="tool-powerapps.png" alt="Power Apps" class="w-full h-full object-cover rounded-full p-3">
+                            </div>
+                            <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs font-medium px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Power Apps</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========== UPDATED CORE COMPETENCIES SECTION ========== -->
+                <!-- NEW: Added 'animate-on-scroll' -->
+                <div class="animate-on-scroll">
+                    <h2 class="text-3xl font-bold text-white text-center mb-12">Core Competencies</h2>
+                </div>
+                
+                <!-- Row 1: 3 Cards -->
+                <!-- NEW: This 'div' is now the trigger for the staggered animation (see JS) -->
+                <div id="competency-grid-1" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                     
-                    <!-- Skill Card 1: Added glass-card style -->
-                    <div class="glass-card p-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105">
-                        <h4 class="text-xl font-semibold text-theme-secondary mb-3">Product & Strategy</h4>
+                    <!-- Card 1: Product Strategy & Discovery -->
+                    <!-- NEW: Added 'animate-on-scroll' -->
+                    <div class="glass-card p-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-[1.03] animate-on-scroll">
+                        <h4 class="text-xl font-semibold text-theme-secondary mb-3">Product Strategy & Discovery</h4>
                         <ul class="list-disc list-inside text-theme-muted space-y-1">
                             <li>Product <strong class="text-theme-text">Vision</strong> & <strong class="text-theme-text">Strategy</strong></li>
                             <li><strong class="text-theme-text">Product Roadmap</strong></li>
-                            <li><strong class="text-theme-text">User Research</strong></li>
-                            <li><strong class="text-theme-text">Go-to-Market (GTM)</strong> Strategy</li>
+                            <li><strong class="text-theme-text">Business Case</strong> Development</li>
+                            <li><strong class="text-theme-text">User Research</strong> & Discovery</li>
+                            <li><strong class="text-theme-text">Market</strong> & Competitive Analysis</li>
+                            <li><strong class="text-theme-text">Requirements Gathering</strong> (BRD, FRD)</li>
                             <li><strong class="text-theme-text">Stakeholder Management</strong></li>
-                            <li><strong class="text-theme-text">AI Product Management</strong></li>
                         </ul>
                     </div>
 
-                    <!-- Skill Card 2: Added glass-card style -->
-                    <div class="glass-card p-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105">
-                        <h4 class="text-xl font-semibold text-theme-secondary mb-3">Development & Execution</h4>
+                    <!-- Card 2: Design & User Experience (UX) -->
+                    <!-- NEW: Added 'animate-on-scroll' -->
+                    <div class="glass-card p-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-[1.03] animate-on-scroll">
+                        <h4 class="text-xl font-semibold text-theme-secondary mb-3">Design & User Experience (UX)</h4>
                         <ul class="list-disc list-inside text-theme-muted space-y-1">
-                            <li><strong class="text-theme-text">Agile</strong> (Scrum, Kanban)</li>
-                            <li><strong class="text-theme-text">Scaled Agile (SAFe)</strong></li>
-                            <li><strong class="text-theme-text">Backlog Management</strong></li>
-                            <li><strong class="text-theme-text">User Story</strong> & Criteria</li>
-                            <li><strong class="text-theme-text">Feature Prioritization</strong></li>
-                            <li><strong class="text-theme-text">User Acceptance Testing</strong></li>
-                        </ul>
-                    </div>
-
-                    <!-- Skill Card 3: Added glass-card style -->
-                    <div class="glass-card p-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105">
-                        <h4 class="text-xl font-semibold text-theme-secondary mb-3">Data & Design</h4>
-                        <ul class="list-disc list-inside text-theme-muted space-y-1">
-                            <li><strong class="text-theme-text">Data Analysis</strong></li>
-                            <li><strong class="text-theme-text">KPI</strong> & Metrics Definition</li>
-                            <li><strong class="text-theme-text">A/B Testing</strong></li>
                             <li><strong class="text-theme-text">Design Thinking</strong></li>
                             <li><strong class="text-theme-text">User Journey Mapping</strong></li>
                             <li><strong class="text-theme-text">Wireframing</strong> & <strong class="text-theme-text">Prototyping</strong></li>
+                            <li><strong class="text-theme-text">Usability Testing</strong></li>
+                            <li><strong class="text-theme-text">User Journey Mapping</strong></li>
+                            <li><strong class="text-theme-text">User Personas</strong></li>
+                            <li><strong class="text-theme-text">Information Architecture</strong></li>
+                            <li><strong class="text-theme-text">Interection Design</strong></li>
+                            <li>UI/UX Principles</li>
                         </ul>
                     </div>
-                    
-                    <!-- Skill Card 4: Added glass-card style -->
-                    <div class="glass-card p-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105">
-                        <h4 class="text-xl font-semibold text-theme-secondary mb-3">Tools & Technical</h4>
+
+                    <!-- Card 3: Agile Development & Execution -->
+                    <!-- NEW: Added 'animate-on-scroll' -->
+                    <div class="glass-card p-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-[1.03] animate-on-scroll">
+                        <h4 class="text-xl font-semibold text-theme-secondary mb-3">Agile Development & Execution</h4>
                         <ul class="list-disc list-inside text-theme-muted space-y-1">
-                            <li>Azure DevOps</li>
-                            <li>Jira</li>
-                            <li>Figma</li>
-                            <li>SQL</li>
-                            <li>Power BI</li>
-                            <li>Tableau</li>
-                            <li>Google Analytics</li>
-                            <li>Power Apps</li>
+                            <li><strong class="text-theme-text">Agile Methodologies</strong> (Scrum, Kanban)</li>
+                            <li><strong class="text-theme-text">Scaled Agile Framework</strong> (SAFe)</li>
+                            <li><strong class="text-theme-text">Backlog Management</strong> & Prioritization</li>
+                            <li><strong class="text-theme-text">User Story</strong> & Acceptance Criteria</li>
+                            <li><strong class="text-theme-text">Sprint Planning</strong> & Leadership</li>
+                            <li><strong class="text-theme-text">User Acceptance Testing</strong> (UAT)</li>
+                            <li><strong class="text-theme-text">Go-to-Market (GTM)</strong> Strategy</li>
+                            <li>Coaching & Team Enablement</li>
                         </ul>
                     </div>
                 </div>
+
+                <!-- Row 2: 2 Cards (Centered) -->
+                <!-- NEW: This 'div' is now the trigger for the staggered animation (see JS) -->
+                <div id="competency-grid-2" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                    
+                    <!-- Card 4: Data Analysis & Optimization -->
+                    <!-- NEW: Added 'animate-on-scroll' -->
+                    <div class="glass-card p-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-[1.03] animate-on-scroll">
+                        <h4 class="text-xl font-semibold text-theme-secondary mb-3">Data Analysis & Optimization</h4>
+                        <ul class="list-disc list-inside text-theme-muted space-y-1">
+                            <li><strong class="text-theme-text">KPI & Metrics</strong> Definition</li>
+                            <li><strong class="text-theme-text">Data Analysis</strong> & Visualization</li>
+                            <li><strong class="text-theme-text">A/B Testing</strong> & Experimentation</li>
+                            <li>Reporting & <strong class="text-theme-text">Storytelling</strong></li>
+                            <li><strong class="text-theme-text">Product Life Cycle</strong> Management</li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 5: Technical & Tooling -->
+                    <!-- NEW: Added 'animate-on-scroll' -->
+                    <div class="glass-card p-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-[1.03] animate-on-scroll">
+                        <h4 class="text-xl font-semibold text-theme-secondary mb-3">Technical & Tooling</h4>
+                        <div class="space-y-2 text-theme-muted">
+                            <p>
+                                <strong class="text-theme-text font-medium">Analytics & Data:</strong>
+                                SQL, Power BI, Tableau, Mixpanel, Google Analytics
+                            </p>
+                            <p>
+                                <strong class="text-theme-text font-medium">Product & Design:</strong>
+                                Azure DevOps, Jira, Figma
+                            </p>
+                            <p>
+                                <strong class="text-theme-text font-medium">Platform & AI:</strong>
+                                Power Apps & Automate, Generative AI, M350 Copilot
+                            </p>
+                            <p>
+                                <strong class="text-theme-text font-medium">Concepts:</strong>
+                                SAAS, API Integration, CI/CD, Infrastructure Management
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- ========== END UPDATED SECTION ========== -->
             </section>
+            
+            <!-- ========== NEW: FEATURED CERTIFICATION ========== -->
+            <!-- NEW: Added 'animate-on-scroll' -->
+            <section id="certification" class="py-16 animate-on-scroll">
+                <h2 class="text-3xl font-bold text-white text-center mb-12">Featured Certification</h2>
+                <div class="max-w-2xl mx-auto">
+                    <div class="glass-card rounded-lg shadow-lg p-4 transition-all duration-300 hover:scale-[1.03]">
+                        <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/155370658" 
+                             alt="Post Graduate Certificate in Product Management from Duke Corporate Education" 
+                             class="clickable-lightbox rounded-md w-full cursor-pointer">
+                    </div>
+                    <p class="text-center text-theme-muted mt-4">
+                        Post Graduate Certificate in Product Management (AI & Growth)
+                        <br>
+                        <strong class="text-theme-text">Duke Corporate Education</strong>
+                    </p>
+                </div>
+            </section>
+            <!-- ========== END CERTIFICATION SECTION ========== -->
+
+
+            <!-- ========== NEW: ENDORSEMENTS SECTION ========== -->
+            <!-- NEW: Added 'animate-on-scroll' -->
+            <section id="endorsements" class="py-16 animate-on-scroll">
+                <h2 class="text-3xl font-bold text-white text-center mb-12">Praise from Leadership and Colleagues</h2>
+                
+                <!-- Endorsement Slider Container -->
+                <div class="relative max-w-2xl mx-auto">
+                    <!-- Slider Window -->
+                    <div class="overflow-hidden rounded-lg">
+                        <!-- Slider Track -->
+                        <div id="endorsement-track" class="flex transition-transform duration-500 ease-in-out">
+                            
+                            <!-- Slide 1: Sanjay Pandey -->
+                            <div class="endorsement-slide min-w-full">
+                                <div class="glass-card p-8 md:p-10 h-full flex flex-col justify-between">
+                                    <blockquote class="text-lg text-theme-text italic mb-6">
+                                        "Ajay had a rare ability to balance business needs, user expectations, and technical constraints... I wholeheartedly recommend him to any organization looking for a product leader who is strategic, grounded, and deeply committed to delivering real value."
+                                    </blockquote>
+                                    <footer>
+                                        <p class="font-bold text-white text-lg">Sanjay Pandey</p>
+                                        <p class="text-theme-muted">AI Enabler | Managed Ajay directly</p>
+                                    </footer>
+                                </div>
+                            </div>
+                            
+                            <!-- Slide 2: Kuber Lubana -->
+                            <div class="endorsement-slide min-w-full">
+                                <div class="glass-card p-8 md:p-10 h-full flex flex-col justify-between">
+                                    <blockquote class="text-lg text-theme-text italic mb-6">
+                                        "I was thoroughly impressed by his ability to learn quickly and deliver results. He picked up Figma from scratch and produced impactful outcomes in a short span of time. Ajay also adapted seamlessly to agile methodologies, contributing effectively to fast-paced workflows."
+                                    </blockquote>
+                                    <footer>
+                                        <p class="font-bold text-white text-lg">Kuber Lubana</p>
+                                        <p class="text-theme-muted">Transforming AEC into Agile Enterprises | Managed Ajay directly</p>
+                                    </footer>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3: Mukta Soni -->
+                            <div class="endorsement-slide min-w-full">
+                                <div class="glass-card p-8 md:p-10 h-full flex flex-col justify-between">
+                                    <blockquote class="text-lg text-theme-text italic mb-6">
+                                        "What truly stood out about Ajay was his proactive attitude and collaborative nature. He was always the first to take initiative... Ajay brings a strong team spirit, strategic thinking, and a user-centric mindset—qualities that are essential for a successful product manager."
+                                    </blockquote>
+                                    <footer>
+                                        <p class="font-bold text-white text-lg">Mukta Soni</p>
+                                        <p class="text-theme-muted">Sr Advanced UX Designer@Honeywell | Studied together</p>
+                                    </footer>
+                                </div>
+                            </div>
+
+                            <!-- Slide 4: Rachit Jain -->
+                            <div class="endorsement-slide min-w-full">
+                                <div class="glass-card p-8 md:p-10 h-full flex flex-col justify-between">
+                                    <blockquote class="text-lg text-theme-text italic mb-6">
+                                        "He consistently demonstrated a high level of skill in Figma design, delivering user-friendly and visually impactful designs. His attention to detail and proactive communication style were highly valuable to the team. I have no doubt that he will continue to excel in his career."
+                                    </blockquote>
+                                    <footer>
+                                        <p class="font-bold text-white text-lg">Rachit Jain</p>
+                                        <p class="text-theme-muted">Digital Product Lead | Senior to Ajay</p>
+                                    </footer>
+                                </div>
+                            </div>
+
+                            <!-- Slide 5: Swathi Pajaniradja -->
+                            <div class="endorsement-slide min-w-full">
+                                <div class="glass-card p-8 md:p-10 h-full flex flex-col justify-between">
+                                    <blockquote class="text-lg text-theme-text italic mb-6">
+                                        "He has a remarkable ability to share his knowledge with others... His collaborative mindset and approachability make him a great team player, and his positive attitude brings out the best in everyone around him. I highly recommend Ajay – he is not only a dedicated professional but also a genuinely kind person."
+                                    </blockquote>
+                                    <footer>
+                                        <p class="font-bold text-white text-lg">Swathi Pajaniradja</p>
+                                        <p class="text-theme-muted">Product Management | Worked on the same team</p>
+                                    </footer>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    <!-- Slider Controls -->
+                    <button id="prev-slide" class="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 bg-theme-secondary/70 p-2 rounded-full text-white hover:bg-theme-secondary transition-colors z-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                        </svg>
+                    </button>
+                    <button id="next-slide" class="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 bg-theme-secondary/70 p-2 rounded-full text-white hover:bg-theme-secondary transition-colors z-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </button>
+
+                    <!-- Slider Dots (Optional but good UX) -->
+                    <div id="slider-dots" class="flex justify-center gap-2 mt-4">
+                        <!-- Dots will be added by JS -->
+                    </div>
+                </div>
+            </section>
+            <!-- ========== END ENDORSEMENTS SECTION ========== -->
+
+
+            <!-- ========== NEW: HOME FOOTER ========== -->
+            <footer class="text-center py-20 border-t border-theme-border mt-16 relative z-10">
+                <h2 class="text-4xl font-bold text-white mb-4">Need to Ship & Grow?</h2>
+                <p class="text-lg text-theme-muted max-w-lg mx-auto mb-8">
+                  I’ve delivered 10x MAU growth and 15% operational efficiency gains  by leading products from discovery to GTM. If you need a PM who can own a complex roadmap and deliver measurable results, let’s connect.
+                <div class="flex justify-center items-center gap-6 flex-wrap">
+                    <a href="mailto:mycareer.ajay@gmail.com" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
+                        mycareer.ajay@gmail.com
+                    </a>
+                    <!-- CORRECTED LINKEDIN URL -->
+                    <a href="https://www.linkedin.com/in/ajay-yadav-pm/" target="_blank" rel="noopener noreferrer" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
+                        LinkedIn
+                    </a>
+                    <a href="tel:+917042316200" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
+                        +91 7042316200
+                    </a>
+                </div>
+                <p class="text-sm text-theme-muted mt-12">&copy; 2025 Ajay Yadav. All rights reserved.</p>
+            </footer>
         </section>
 
         <!-- ========== 2. CAREER TIMELINE SECTION ========== -->
         <section id="page-career" class="page-section hidden">
-            <h2 class="text-4xl font-bold text-white text-center mb-16">Career Timeline</h2>
-            <div class="max-w-2xl mx-auto">
+            <!-- NEW: Added 'animate-on-scroll' -->
+            <h2 class="text-4xl font-bold text-white text-center mb-16 animate-on-scroll">Career Timeline</h2>
+            <!-- NEW: Added 'animate-on-scroll' -->
+            <div class="max-w-2xl mx-auto animate-on-scroll">
                 
                 <!-- Timeline Item 1 -->
                 <div class="timeline-item">
@@ -285,17 +628,43 @@
                 </div>
 
             </div>
+
+            <!-- ========== NEW: CAREER FOOTER ========== -->
+            <footer class="text-center py-20 border-t border-theme-border mt-16 relative z-10">
+                <h2 class="text-4xl font-bold text-white mb-4">A Journey of Impact.</h2>
+                <p class="text-lg text-theme-muted max-w-lg mx-auto mb-8">
+                      My progression from Intern to Digital Product Lead at a single company  demonstrates my ability to master new challenges, take on increasing ownership, and consistently deliver value. I've reduced bugs by 25% , cut rework by 30%, and am now ready to bring that drive to your team.
+                </p>
+                <div class="flex justify-center items-center gap-6 flex-wrap">
+                    <a href="mailto:mycareer.ajay@gmail.com" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
+                        mycareer.ajay@gmail.com
+                    </a>
+                    <!-- CORRECTED LINKEDIN URL -->
+                    <a href="https://www.linkedin.com/in/ajay-yadav-pm/" target="_blank" rel="noopener noreferrer" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
+                        LinkedIn
+                    </a>
+                    <a href="tel:+917042316200" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
+                        +91 7042316200
+                    </a>
+                </div>
+                <p class="text-sm text-theme-muted mt-12">&copy; 2025 Ajay Yadav. All rights reserved.</p>
+            </footer>
         </section>
 
         <!-- ========== 3. FEATURED PROJECTS SECTION ========== -->
         <section id="page-projects" class="page-section hidden">
-            <h2 class="text-4xl font-bold text-white text-center mb-12">Featured Projects</h2>
+            <!-- NEW: Added 'animate-on-scroll' -->
+            <h2 class="text-4xl font-bold text-white text-center mb-12 animate-on-scroll">Featured Projects</h2>
             <div class="space-y-12">
 
-                <!-- Project Card 1: Added glass-card style -->
-                <div class="glass-card rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
+                <!-- Project Card 1 -->
+                <!-- NEW: Added 'animate-on-scroll' -->
+                <div class="glass-card rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] animate-on-scroll">
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold text-theme-primary mb-2">Ramboll CAD Menus</h3>
+                        <!-- LINK ADDED -->
+                        <a href="httpsIs://drive.google.com/file/d/15o5PJ1GNz5M6bl1_LmRlO_Dexq5U5UJL/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                            <h3 class="text-2xl font-bold text-theme-primary mb-2 linkable-title">Ramboll CAD Menus</h3>
+                        </a>
                         <p class="text-theme-muted mb-4"><strong>Role:</strong> Digital Product Lead</p>
                         
                         <h4 class="text-lg font-semibold text-white mt-4 mb-2">The Problem</h4>
@@ -304,7 +673,6 @@
                         <h4 class="text-lg font-semibold text-white mt-4 mb-2">My Solution</h4>
                         <p class="text-theme-muted">I initiated the project by securing executive buy-in with a data-driven business case. We then built a standardized C# toolset (CAD Menus) with a central configurator to enforce project standards and centralize tools for over 2,500 engineers.</p>
                         
-                        <!-- Added backdrop-blur-md to outcome box -->
                         <div class="mt-6 p-4 rounded-lg bg-emerald-900/50 backdrop-blur-md border border-theme-secondary">
                             <h4 class="text-lg font-semibold text-theme-secondary">The Outcome</h4>
                             <p class="text-white">Successfully delivered a <strong class="font-bold">15% efficiency gain</strong>, saving an estimated <strong class="font-bold">22,185 hours annually</strong> for a single business unit.</p>
@@ -312,10 +680,14 @@
                     </div>
                 </div>
 
-                <!-- Project Card 2: Added glass-card style -->
-                <div class="glass-card rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
+                <!-- Project Card 2 -->
+                <!-- NEW: Added 'animate-on-scroll' with inline delay -->
+                <div class="glass-card rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] animate-on-scroll" style="transition-delay: 200ms;">
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold text-theme-primary mb-2">Cab-Connect: Ride Comparison App (Personal)</h3>
+                        <!-- LINK ADDED -->
+                        <a href="httpsIs://docs.google.com/presentation/d/1g6Aj1pqLMxpTy2tPgipU5yFgE2N_AcKXbMQ2fBuJhYs/edit?slide=id.p1#slide=id.p1" target="_blank" rel="noopener noreferrer">
+                            <h3 class="text-2xl font-bold text-theme-primary mb-2 linkable-title">Cab-Connect: Ride Comparison App (Personal)</h3>
+                        </a>
                         <p class="text-theme-muted mb-4"><strong>Role:</strong> Product Manager</p>
                         
                         <h4 class="text-lg font-semibold text-white mt-4 mb-2">The Problem</h4>
@@ -324,7 +696,6 @@
                         <h4 class="text-lg font-semibold text-white mt-4 mb-2">My Solution</h4>
                         <p class="text-theme-muted">I conducted user research and interviews to validate the user problem. From there, I designed the end-to-end user experience, creating user journey maps, wireframes, and high-fidelity prototypes, and defined a prioritized backlog.</p>
                         
-                        <!-- Added backdrop-blur-md to outcome box -->
                         <div class="mt-6 p-4 rounded-lg bg-emerald-900/50 backdrop-blur-md border border-theme-secondary">
                             <h4 class="text-lg font-semibold text-theme-secondary">The Outcome</h4>
                             <p class="text-white">Produced a complete, <strong class="font-bold">clickable prototype</strong>, a full product specification, and a go-to-market growth strategy built around a <strong class="font-bold">North Star Metric & AARRR framework</strong>.</p>
@@ -333,16 +704,42 @@
                 </div>
 
             </div>
+
+            <!-- ========== NEW: PROJECTS FOOTER ========== -->
+            <footer class="text-center py-20 border-t border-theme-border mt-16 relative z-10">
+                <h2 class="text-4xl font-bold text-white mb-4">See My Problem-Solving in Action?</h2>
+                <p class="text-lg text-theme-muted max-w-lg mx-auto mb-8">
+                  These projects show my end-to-end playbook: deep user research, data-driven validation, and relentless execution. This is the process I used to overhaul a UI for 10x MAU growth and launch a GTM strategy for 2,500+ engineers. Ready to see this process applied to your challenges?
+                </p>
+                <div class="flex justify-center items-center gap-6 flex-wrap">
+                    <a href="mailto:mycareer.ajay@gmail.com" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
+                        mycareer.ajay@gmail.com
+                    </a>
+                    <!-- CORRECTED LINKEDIN URL -->
+                    <a href="httpshttps://www.linkedin.com/in/ajay-yadav-pm/" target="_blank" rel="noopener noreferrer" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
+                        LinkedIn
+                    </a>
+                    <a href="tel:+917042316200" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
+                        +91 7042316200
+                    </a>
+                </div>
+                <p class="text-sm text-theme-muted mt-12">&copy; 2025 Ajay Yadav. All rights reserved.</p>
+            </footer>
         </section>
         
         <!-- ========== 4. EDUCATION & CERTIFICATIONS SECTION ========== -->
         <section id="page-education" class="page-section hidden">
-            <h2 class="text-4xl font-bold text-white text-center mb-16">Education & Certifications</h2>
-            <div class="max-w-2xl mx-auto">
+            <!-- NEW: Added 'animate-on-scroll' -->
+            <h2 class="text-4xl font-bold text-white text-center mb-16 animate-on-scroll">Education & Certifications</h2>
+            <!-- NEW: Added 'animate-on-scroll' -->
+            <div class="max-w-2xl mx-auto animate-on-scroll">
 
                 <!-- Education Timeline Item 1 -->
                 <div class="timeline-item">
-                    <h4 class="text-xl font-bold text-theme-secondary mb-1">Post Graduate Certificate in Product Management</h4>
+                    <!-- LINK ADDED -->
+                    <a href="httpsIs://www.credential.net/5d1895be-8a81-484e-b321-f9327ea8c4b9#acc.gSXbcQEH" target="_blank" rel="noopener noreferrer">
+                        <h4 class="text-xl font-bold text-theme-secondary mb-1 linkable-title">Post Graduate Certificate in Product Management</h4>
+                    </a>
                     <p class="text-theme-text font-medium">DUKE Corporate Education, Durham, USA</p>
                     <p class="text-sm text-theme-muted mb-3">September 2024 - May 2025</p>
                     <ul class="list-disc list-inside text-theme-muted space-y-2">
@@ -353,7 +750,10 @@
                 
                 <!-- Education Timeline Item 2 -->
                 <div class="timeline-item">
-                    <h4 class="text-xl font-bold text-theme-secondary mb-1">M.tech in Production and Industrial Engineering</h4>
+                    <!-- LINK ADDED -->
+                    <a href="httpsIs://drive.google.com/file/d/1u5zcUDbun3ZwA2DFkXiXjL05MwiksDcT/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">
+                        <h4 class="text-xl font-bold text-theme-secondary mb-1 linkable-title">M.tech in Production and Industrial Engineering</h4>
+                    </a>
                     <p class="text-theme-text font-medium">NIT Kurukshetra, Haryana, IN</p>
                     <p class="text-sm text-theme-muted mb-3">September 2020 - May 2022</p>
                     <ul class="list-disc list-inside text-theme-muted space-y-2">
@@ -363,7 +763,10 @@
 
                 <!-- Education Timeline Item 3 -->
                 <div class="timeline-item">
-                    <h4 class="text-xl font-bold text-theme-secondary mb-1">B.tech in Mechanical Engineering</h4>
+                    <!-- LINK ADDED -->
+                    <a href="httpsIS://drive.google.com/file/d/1MbMJks2T6aRkGF-vmCtJDkhQpDnycUeP/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <h4 class="text-xl font-bold text-theme-secondary mb-1 linkable-title">B.tech in Mechanical Engineering</h4>
+                    </a>
                     <p class="text-theme-text font-medium">Maharshi Dayanand University, Haryana, IN</p>
                     <p class="text-sm text-theme-muted mb-3">August 2014 - May 2018</p>
                     <ul class="list-disc list-inside text-theme-muted space-y-2">
@@ -372,32 +775,31 @@
                 </div>
 
             </div>
-        </section>
 
-        <!-- ========== 5. CONTACT FOOTER ========== -->
-        <footer id="contact" class="text-center py-20 border-t border-theme-border mt-16 relative z-10">
-            <h2 class="text-4xl font-bold text-white mb-4">Let's Build Something Together</h2>
-            <p class="text-lg text-theme-muted max-w-lg mx-auto mb-8">
-                I'm always open to discussing new product challenges, leadership opportunities, or just sharing ideas. Feel free to reach out.
-            </p>
-            <div class="flex justify-center items-center gap-6 flex-wrap">
-                <a href="mailto:mycareer.ajay@gmail.com" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
-                    mycareer.ajay@gmail.com
-                </a>
-                <a href="https://www.linkedin.com/in/ajay-yadav-product/" target="_blank" rel="noopener noreferrer" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
-                    LinkedIn
-                </a>
-                <a href="tel:+917042316200" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
-                    +91 7042316200
-                </a>
-            </div>
-            <p class="text-sm text-theme-muted mt-12">&copy; 2025 Ajay Yadav. All rights reserved.</p>
-        </footer>
+            <!-- ========== NEW: EDUCATION FOOTER ========== -->
+            <footer class="text-center py-20 border-t border-theme-border mt-16 relative z-10">
+                <h2 class="text-4xl font-bold text-white mb-4">Let's Build Something Together</h2>
+                <p class="text-lg text-theme-muted max-w-lg mx-auto mb-8">
+                    I'm always open to discussing new product challenges, leadership opportunities, or just sharing ideas. Feel free to reach out.
+                <div class="flex justify-center items-center gap-6 flex-wrap">
+                    <a href="mailto:mycareer.ajay@gmail.com" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
+                        mycareer.ajay@gmail.com
+                    </a>
+                    <!-- CORRECTED LINKEDIN URL -->
+                    <a href="httpshttps://www.linkedin.com/in/ajay-yadav-pm/" target="_blank" rel="noopener noreferrer" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
+                        LinkedIn
+                    </a>
+                    <a href="tel:+917042316200" class="text-lg font-medium text-theme-primary hover:text-theme-secondary transition-colors">
+                        +91 7042316200
+                    </a>
+                </div>
+                <p class="text-sm text-theme-muted mt-12">&copy; 2025 Ajay Yadav. All rights reserved.</p>
+            </footer>
+        </section>
 
     </div> <!-- End Container -->
 
     <!-- ========== IMAGE LIGHTBOX (Modal) ========== -->
-    <!-- This is the new HTML for the full-screen image preview -->
     <div id="image-lightbox" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[60] flex justify-center items-center p-4 hidden cursor-pointer" onclick="this.classList.add('hidden')">
         <img id="lightbox-img" src="" alt="Ajay Yadav - Profile Photo" class="max-w-[90vw] max-h-[90vh] rounded-lg shadow-2xl">
     </div>
@@ -409,21 +811,25 @@
             const navLinks = document.querySelectorAll('.nav-link');
             const pageSections = document.querySelectorAll('.page-section');
 
-            // --- NEW LIGHTBOX SCRIPT ---
-            const profileImg = document.getElementById('profile-img');
+            // --- UPDATED LIGHTBOX SCRIPT ---
+            // Get lightbox elements
             const lightbox = document.getElementById('image-lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
+            // Find ALL clickable images
+            const clickableImages = document.querySelectorAll('.clickable-lightbox');
 
-            if (profileImg && lightbox && lightboxImg) {
-                // Open lightbox
-                profileImg.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Prevent click from bubbling up to the lightbox closer
-                    const imgSrc = profileImg.getAttribute('src');
-                    lightboxImg.setAttribute('src', imgSrc);
-                    lightbox.classList.remove('hidden');
+            if (lightbox && lightboxImg && clickableImages.length > 0) {
+                // Add click listener to all clickable images
+                clickableImages.forEach(img => {
+                    img.addEventListener('click', (e) => {
+                        e.stopPropagation(); // Stop click from bubbling up
+                        const imgSrc = img.getAttribute('src');
+                        lightboxImg.setAttribute('src', imgSrc);
+                        lightbox.classList.remove('hidden');
+                    });
                 });
             }
-            // --- END NEW SCRIPT ---
+            // --- END UPDATED SCRIPT ---
 
 
             // Function to switch tabs
@@ -437,6 +843,28 @@
                 const targetPage = document.getElementById(targetId);
                 if (targetPage) {
                     targetPage.classList.remove('hidden');
+                    
+                    // --- NEW: Trigger animations on tab switch ---
+                    // Find all animate-on-scroll elements within this tab
+                    const elementsToAnimate = targetPage.querySelectorAll('.animate-on-scroll');
+                    // Reset them by making them invisible, then trigger
+                    elementsToAnimate.forEach(el => {
+                        el.classList.remove('is-visible');
+                    });
+                    
+                    // Use a tiny timeout to allow the browser to register
+                    // the 'hidden' state before adding 'is-visible'
+                    // This re-triggers the animation every time you switch tabs
+                    setTimeout(() => {
+                        elementsToAnimate.forEach((el, index) => {
+                            // Check if it's part of a staggered grid
+                            const parentGridId = el.parentElement.id;
+                            if (parentGridId === 'competency-grid-1' || parentGridId === 'competency-grid-2') {
+                                el.style.transitionDelay = `${index * 150}ms`;
+                            }
+                            el.classList.add('is-visible');
+                        });
+                    }, 50); // 50ms delay
                 }
 
                 // Update active state in nav
@@ -446,6 +874,9 @@
                         link.classList.add('active');
                     }
                 });
+
+                // Scroll to top
+                window.scrollTo(0, 0);
             }
 
             // Add click event listeners to nav links
@@ -457,8 +888,108 @@
                 });
             });
 
-            // Show the home page by default
-            showPage('page-home');
+            // --- NEW ENDORSEMENT SLIDER SCRIPT ---
+            const track = document.getElementById('endorsement-track');
+            const prevButton = document.getElementById('prev-slide');
+            const nextButton = document.getElementById('next-slide');
+            const dotsContainer = document.getElementById('slider-dots');
+            
+            // Check if slider elements exist on the current page
+            if (track && prevButton && nextButton && dotsContainer) {
+                const slides = Array.from(track.children);
+                const slideCount = slides.length;
+                let currentSlide = 0;
+                let dots = [];
+
+                // Create dots
+                for (let i = 0; i < slideCount; i++) {
+                    const dot = document.createElement('button');
+                    dot.classList.add('w-3', 'h-3', 'rounded-full', 'transition-colors');
+                    dot.classList.add(i === 0 ? 'bg-theme-primary' : 'bg-theme-border');
+                    dot.addEventListener('click', () => {
+                        goToSlide(i);
+                    });
+                    dotsContainer.appendChild(dot);
+                    dots.push(dot);
+                }
+
+                // Function to move to a specific slide
+                const goToSlide = (slideIndex) => {
+                    if (slideIndex < 0) {
+                        slideIndex = slideCount - 1;
+                    } else if (slideIndex >= slideCount) {
+                        slideIndex = 0;
+                    }
+                    
+                    track.style.transform = `translateX(-${slideIndex * 100}%)`;
+                    currentSlide = slideIndex;
+                    updateDots();
+                };
+
+                // Function to update which dot is active
+                const updateDots = () => {
+                    dots.forEach((dot, index) => {
+                        dot.classList.toggle('bg-theme-primary', index === currentSlide);
+                        dot.classList.toggle('bg-theme-border', index !== currentSlide);
+                    });
+                };
+
+                // Button event listeners
+                nextButton.addEventListener('click', () => {
+                    goToSlide(currentSlide + 1);
+                });
+
+                prevButton.addEventListener('click', () => {
+                    goToSlide(currentSlide - 1);
+                });
+
+                // Initialize
+                goToSlide(0);
+            }
+            // --- END SLIDER SCRIPT ---
+
+            // --- NEW: INTERSECTION OBSERVER FOR SCROLL ANIMATIONS ---
+            // This script will run ONCE on initial page load for the home page.
+            // The tab-switching logic above handles animations for other tabs.
+            
+            // Create the observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Check if it's part of a staggered grid
+                        const parentGridId = entry.target.parentElement.id;
+                        let delay = 0;
+                        if (parentGridId === 'competency-grid-1' || parentGridId === 'competency-grid-2') {
+                            // Find the index of the child within its parent
+                            const childIndex = Array.from(entry.target.parentElement.children).indexOf(entry.target);
+                            delay = childIndex * 150; // 150ms delay per card
+                        }
+                        
+                        entry.target.style.transitionDelay = `${delay}ms`;
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Stop observing once it's visible
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            // Observe all elements with the class 'animate-on-scroll'
+            const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+            elementsToAnimate.forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Manually trigger the *first* animation (the hero section)
+            // since it might already be in view on load
+            setTimeout(() => {
+                const hero = document.querySelector('#page-home .animate-on-scroll');
+                if (hero) {
+                    hero.classList.add('is-visible');
+                    observer.unobserve(hero);
+                }
+            }, 100);
+
         });
     </script>
 
