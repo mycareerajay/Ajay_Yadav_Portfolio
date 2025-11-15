@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajay Yadav - Digital Product Lead</title>
+    <style>
+        /* --- Global Styles --- */
+        :root {
+            --color-bg: #121212;
+            --color-bg-secondary: #1E1E1E;
+            --color-primary: #BB86FC;
+            --color-secondary: #03DAC6;
+            --color-text: #E0E0E0;
+            --color-text-muted: #888888;
+            --color-border: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1, h2, h3, h4 {
+            color: #FFFFFF;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; border-bottom: 2px solid var(--color-primary); padding-bottom: 10px; margin-top: 40px; }
+        h3 { font-size: 1.5rem; color: var(--color-secondary); margin-top: 20px; }
+        h4 { font-size: 1.1rem; color: var(--color-text); font-weight: 700; margin-bottom: 5px; }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--color-text-muted);
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        /* --- Header / Hero --- */
+        .hero {
+            text-align: center;
+            padding-top: 60px;
+            padding-bottom: 60px;
+        }
+        .hero h1 {
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .hero .pitch {
+            font-size: 1.1rem;
+            color: var(--color-text);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        .hero .pitch strong {
+            color: var(--color-secondary);
+            font-weight: 600;
+        }
+        .hero-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .hero-links a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--color-primary);
+            color: #121212;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .hero-links a.secondary {
+            background-color: transparent;
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+        }
+        .hero-links a:hover {
+            transform: translateY(-3px);
+            background-color: var(--color-secondary);
+            border-color: var(--color-secondary);
+            color: #121212;
+            text-decoration: none;
+        }
+        .hero-contact {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        /* --- Skills --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .skill-category {
+            background-color: var(--color-bg-secondary);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+        }
+        .skill-category h4 {
+            color: var(--color-secondary);
+            margin-bottom: 15px;
+        }
+        .skill-category ul {
+            list-style: none;
+        }
+        .skill-category li {
+            margin-bottom: 8px;
+            color: var(--color-text-muted);
+        }
+        .skill-category li strong {
+            color: var(--color-text);
+            font-weight: 500;
+        }
+
+        /* --- Projects --- */
+        .project-card {
+            background-color: var(--color-bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(187, 134, 252, 0.1);
+        }
+        .project-card h3 { margin-top: 0; }
+        .project-outcome {
+            background-color: rgba(3, 218, 198, 0.1);
+            color: var(--color-secondary);
+            border: 1px solid var(--color-secondary);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+        .project-outcome strong {
+            color: #FFFFFF;
+        }
+        
+        /* --- Experience (Timeline) --- */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: var(--color-primary);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border: 3px solid var(--color-primary);
+            background-color: var(--color-bg);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-item h4 {
+            font-size: 1.3rem;
+            color: var(--color-secondary);
+        }
+        .timeline-date {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            margin-bottom: 10px;
+        }
+        .timeline-item ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            color: var(--color-text-muted);
+        }
+        .timeline-item ul li {
+            margin-bottom: 10px;
+        }
+        .timeline-item ul li strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        /* --- Education --- */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .education-card {
+            background-color: var(--color-bg-secondary);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+        }
+        .education-card h4 {
+            color: var(--color-text);
+            font-size: 1.2rem;
+        }
+        .education-card p {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: var(--color-primary);
+        }
+        .education-card .details {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid var(--color-border);
+            margin-top: 40px;
+        }
+        .footer h2 {
+            border: none;
+            margin-bottom: 15px;
+        }
+        .footer p {
+            max-width: 500px;
+            margin: 0 auto 30px;
+            color: var(--color-text);
+            font-size: 1.1rem;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .footer-links a:hover {
+            color: var(--color-secondary);
+            text-decoration: none;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+            h3 { font-size: 1.3rem; }
+            .container { padding: 20px 15px; }
+            .hero-contact { flex-direction: column; gap: 10px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header class="hero">
+            <h1>Ajay Yadav</h1>
+            <p class="subtitle">Digital Product Lead</p>
+            <p class="pitch">
+                [cite_start]Data-driven Product Manager with 4+ years of experience leading the end-to-end product lifecycle[cite: 8].
+                I specialize in <strong>Product Strategy</strong>, <strong>User Research</strong>, and <strong>Data Analysis</strong>, and have led major initiatives
+                [cite_start]resulting in <strong>10x growth in MAU</strong> and a <strong>15% boost in operational efficiency</strong>[cite: 9].
+            </p>
+            <div class="hero-links">
+                <a href="#projects">View My Work</a>
+                <a href="#contact" class="secondary">Get In Touch</a>
+            </div>
+            <div class="hero-contact">
+                [cite_start]<span><a href="mailto:mycareer.ajay@gmail.com">mycareer.ajay@gmail.com</a> [cite: 5]</span>
+                <span>•</span>
+                [cite_start]<span><a href="https://www.linkedin.com/in/ajay-yadav-product/">Ajay Yadav - LinkedIn</a> [cite: 7]</span>
+                <span>•</span>
+                [cite_start]<span>+91 7042316200 [cite: 1]</span>
+                <span>•</span>
+                [cite_start]<span>Gurugram, IN [cite: 6]</span>
+            </div>
+        </header>
+
+        <section id="skills">
+            <h2>Skills & Tools</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Product & Strategy</h4>
+                    <ul>
+                        [cite_start]<li>Product <strong>Vision</strong> & <strong>Strategy</strong> [cite: 12]</li>
+                        [cite_start]<li><strong>Product Roadmap</strong> [cite: 12]</li>
+                        [cite_start]<li><strong>User Research</strong> [cite: 12]</li>
+                        [cite_start]<li><strong>Go-to-Market (GTM)</strong> Strategy [cite: 13]</li>
+                        [cite_start]<li><strong>Stakeholder Management</strong> [cite: 13]</li>
+                        [cite_start]<li><strong>AI Product Management</strong> [cite: 22]</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Development & Execution</h4>
+                    <ul>
+                        [cite_start]<li><strong>Agile Methodologies</strong> (Scrum, Kanban) [cite: 16]</li>
+                        [cite_start]<li><strong>Scaled Agile Framework (SAFe)</strong> [cite: 16]</li>
+                        [cite_start]<li><strong>Backlog Management</strong> [cite: 14]</li>
+                        [cite_start]<li><strong>User Story</strong> & Acceptance Criteria [cite: 14]</li>
+                        [cite_start]<li><strong>Feature Prioritization</strong> [cite: 14]</li>
+                        [cite_start]<li><strong>User Acceptance Testing (UAT)</strong> [cite: 15]</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Data & Design</h4>
+                    <ul>
+                        [cite_start]<li><strong>Data Analysis</strong> & Visualization [cite: 18]</li>
+                        [cite_start]<li><strong>KPI</strong> & Metrics Definition [cite: 18]</li>
+                        [cite_start]<li><strong>A/B Testing</strong> [cite: 18]</li>
+                        [cite_start]<li><strong>Design Thinking</strong> [cite: 19]</li>
+                        [cite_start]<li><strong>User Journey Mapping</strong> [cite: 19]</li>
+                        [cite_start]<li><strong>Wireframing</strong> & Prototyping [cite: 19]</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Tools & Technical</h4>
+                    <ul>
+                        [cite_start]<li>Azure DevOps [cite: 20]</li>
+                        [cite_start]<li>Jira [cite: 20]</li>
+                        [cite_start]<li>Figma [cite: 20]</li>
+                        [cite_start]<li>SQL [cite: 20]</li>
+                        [cite_start]<li>Power BI [cite: 20]</li>
+                        [cite_start]<li>Tableau [cite: 21]</li>
+                        [cite_start]<li>Google Analytics [cite: 20]</li>
+                        [cite_start]<li>Mixpanel [cite: 20]</li>
+                        [cite_start]<li>Power Apps & Power Automate [cite: 21]</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Featured Projects</h2>
+
+            <div class="project-card">
+                <h3>Ramboll CAD Menus</h3>
+                [cite_start]<p><strong>The Problem:</strong> Inefficient workflows and significant compliance risks caused by non-standardized CAD tools across the organization[cite: 44].</p>
+                <p><strong>My Solution:</strong> I initiated the project by securing executive buy-in with a data-driven business case. [cite_start]We then built a standardized C# toolset (CAD Menus) with a central configurator to enforce project standards and centralize tools for over 2,500 engineers[cite: 45, 28].</p>
+                <div class="project-outcome">
+                    [cite_start]<strong>The Outcome:</strong> Successfully delivered a <strong>15% efficiency gain</strong>, saving an estimated <strong>22,185 hours annually</strong> for a single business unit[cite: 46].
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Cab-Connect: Ride Comparison App (Personal Project)</h3>
+                [cite_start]<p><strong>The Problem:</strong> Users waste significant time and money by having to manually open and compare prices and wait times across multiple ride-hailing apps[cite: 49].</p>
+                <p><strong>My Solution:</strong> I conducted user research and interviews to validate the user problem. [cite_start]From there, I designed the end-to-end user experience, creating user journey maps, wireframes, and high-fidelity prototypes, and defined a prioritized backlog[cite: 50].</p>
+                <div class="project-outcome">
+                    [cite_start]<strong>The Outcome:</strong> Produced a complete, <strong>clickable prototype</strong>, a full product specification, and a go-to-market growth strategy built around a <strong>North Star Metric & AARRR framework</strong>[cite: 51].
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Career Timeline</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <h4>Digital Product Lead</h4>
+                    <div class="timeline-date">Ramboll India Pvt. Ltd. | [cite_start]January 2025 - Present [cite: 25, 26]</div>
+                    <ul>
+                        [cite_start]<li>Drove a <strong>10x increase in Monthly Active Users (MAU)</strong> for the QA Tool by leading a complete UI/UX overhaul[cite: 27].</li>
+                        [cite_start]<li>Unlocked a <strong>15% gain in operational efficiency</strong> by developing and executing the GTM strategy for Ramboll CAD Menus, driving adoption to 2,500+ engineers[cite: 28].</li>
+                        [cite_start]<li>Boosted user adoption by <strong>20%</strong> by establishing product KPIs and using Power BI to identify user journey friction[cite: 29].</li>
+                        [cite_start]<li>Streamlined the internal innovation pipeline by designing and launching an <strong>Idea Management System</strong> using Power Apps & Power Automate[cite: 31].</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>Product Analyst</h4>
+                    <div class="timeline-date">Ramboll India Pvt. Ltd. | [cite_start]August 2022 - December 2024 [cite: 32]</div>
+                    <ul>
+                        [cite_start]<li>Reduced development ambiguity and <strong>rework by 30%</strong> by authoring a meticulous product backlog in Azure DevOps[cite: 33].</li>
+                        [cite_start]<li>Drove a <strong>25% reduction in post-deployment bugs</strong> by owning the end-to-end UAT process and establishing a tight user feedback loop[cite: 35].</li>
+                        [cite_start]<li>Improved product delivery <strong>cadence by 15%</strong> by coaching the team on Agile methodologies and actively removing blockers[cite: 34].</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>Product Management - Intern</h4>
+                    <div class="timeline-date">Ramboll India Pvt. Ltd. | [cite_start]January 2022 - July 2022 [cite: 36]</div>
+                    <ul>
+                        [cite_start]<li>Directly informed the initial product roadmap by delivering foundational <strong>market and competitive analysis</strong>[cite: 37].</li>
+                        [cite_start]<li>Contributed to product discovery by developing user journey maps, wireframes, and prototypes to <strong>validate core concepts</strong>[cite: 38].</li>
+                        [cite_start]<li>Initiated and built the first iteration of the team's <strong>Design Language System</strong>, accelerating development handoff[cite: 39].</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education & Certifications</h2>
+            <div class="education-grid">
+                
+                <div class="education-card">
+                    <h4>Post Graduate Certificate in Product Management</h4>
+                    [cite_start]<p>DUKE Corporate Education, Durham, USA [cite: 57, 59]</p>
+                    <span class="details">Specializations: AI Product Management | [cite_start]Growth Product Management [cite: 60]</span>
+                </div>
+
+                <div class="education-card">
+                    <h4>M.tech in Production and Industrial Engineering</h4>
+                    [cite_start]<p>NIT Kurukshetra, Haryana, IN [cite: 53]</p>
+                    [cite_start]<span class="details">Grade: 8.55 GPA [cite: 53]</span>
+                </div>
+                
+                <div class="education-card">
+                    <h4>B.tech in Mechanical Engineering</h4>
+                    [cite_start]<p>Maharshi Dayanand University, Haryana, IN [cite: 54]</p>
+                    [cite_start]<span class="details">Score: 7.69 GPA [cite: 55]</span>
+                </div>
+
+            </div>
+        </section>
+
+        <footer id="contact" class="footer">
+            <h2>Let's Build Something Together</h2>
+            <p>
+                I'm always open to discussing new product challenges, leadership opportunities, or just sharing ideas. Feel free to reach out.
+            </p>
+            <div class="footer-links">
+                [cite_start]<a href="mailto:mycareer.ajay@gmail.com">mycareer.ajay@gmail.com [cite: 5]</a>
+                [cite_start]<a href="https://www.linkedin.com/in/ajay-yadav-product/">LinkedIn [cite: 7]</a>
+                [cite_start]<a href="tel:+917042316200">+91 7042316200 [cite: 1]</a>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
