@@ -1,25 +1,1131 @@
-<!-- ... existing code ... -->
-            <!-- Right Column: Profile Photo Fix -->
-            <div class="lg:col-span-5 flex justify-center relative items-center">
-                <div class="relative z-10 border-4 border-pm-dark rounded-2xl overflow-hidden shadow-neo bg-pm-indigo w-full max-w-[320px] aspect-[4/7]">
-                    <img src="DOC-20260925-WA0000(1).jpg" alt="Ajay Yadav" class="w-full h-full object-cover object-top" onerror="this.src='https://placehold.co/400x700/a5b4fc/111827?text=Photo+Pending'">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajay Yadav | Product Manager Portfolio</title>
+    <meta name="description" content="Portfolio of Ajay Yadav, transitioning from Business Analyst to Product Manager. Experience in 0-to-1 launches, Agile, and growth strategy.">
+    
+    <!-- Google Fonts: 'Outfit' for a modern, friendly, and geometric look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons for playful, cartoon-like duotone pictograms -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        // Vibrant, playful palette
+                        pm: {
+                            yellow: '#FFD803',
+                            pink: '#FFA8CA',
+                            blue: '#BAE8E8',
+                            purple: '#B19CD9',
+                            green: '#A7F3D0',
+                            dark: '#2D334A',
+                            light: '#FFFFFE'
+                        }
+                    },
+                    boxShadow: {
+                        // Neo-brutalist solid offset shadows
+                        'brutal': '6px 6px 0px 0px rgba(45, 51, 74, 1)',
+                        'brutal-lg': '10px 10px 0px 0px rgba(45, 51, 74, 1)',
+                        'brutal-hover': '2px 2px 0px 0px rgba(45, 51, 74, 1)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { 
+            font-family: 'Outfit', sans-serif; 
+            background-color: #fcfcfc;
+            /* Subtle dotted background pattern */
+            background-image: radial-gradient(#cbd5e1 2px, transparent 2px);
+            background-size: 32px 32px;
+            color: #2D334A;
+            overflow-x: hidden;
+        }
+
+        /* --- Animations --- */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+        .animate-float-delayed { animation: float 5s ease-in-out infinite 1.5s; }
+        .animate-float-fast { animation: float 3s ease-in-out infinite 0.5s; }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        .group:hover .group-hover\:animate-wiggle {
+            animation: wiggle 0.5s ease-in-out infinite;
+        }
+
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob { animation: blob 7s infinite; }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+
+        /* Scroll Reveal Utility Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #FFFFFE; border-left: 2px solid #2D334A; }
+        ::-webkit-scrollbar-thumb { background: #FFD803; border: 2px solid #2D334A; border-radius: 6px; }
+        ::-webkit-scrollbar-thumb:hover { background: #FFA8CA; }
+    </style>
+</head>
+<body class="antialiased selection:bg-pm-pink selection:text-pm-dark relative">
+
+    <!-- Background Animated Blobs -->
+    <div class="fixed inset-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
+        <div class="absolute top-0 -left-4 w-72 h-72 bg-pm-purple rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
+        <div class="absolute top-0 -right-4 w-72 h-72 bg-pm-yellow rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pm-pink rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-4000"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-4 px-4 transition-all duration-300">
+        <div class="max-w-5xl mx-auto bg-pm-light border-4 border-pm-dark rounded-full shadow-brutal px-6 py-3 flex justify-between items-center transition-transform hover:-translate-y-1 hover:shadow-brutal-lg duration-300">
+            <div class="font-extrabold text-2xl tracking-tight text-pm-dark flex items-center gap-2">
+                <i class="ph-duotone ph-rocket-launch text-pm-purple text-3xl animate-float-fast"></i>
+                Ajay<span class="text-pm-pink">Yadav</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="font-bold text-pm-dark hover:text-pm-purple transition-colors">About</a>
+                <a href="#impact" class="font-bold text-pm-dark hover:text-pm-pink transition-colors">Impact</a>
+                <a href="#experience" class="font-bold text-pm-dark hover:text-pm-green transition-colors">Experience</a>
+                <a href="#projects" class="font-bold text-pm-dark hover:text-pm-blue transition-colors">Case Studies</a>
+            </div>
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="https://www.linkedin.com/in/ajay-yadav-pm/" target="_blank" aria-label="LinkedIn Profile" class="inline-flex items-center justify-center w-10 h-10 md:w-11 md:h-11 border-4 border-pm-dark rounded-full font-bold text-pm-dark bg-pm-blue hover:bg-[#0A66C2] hover:text-white transition-colors shadow-brutal hover:shadow-brutal-hover hover:translate-y-1 active:translate-y-2 active:shadow-none duration-200">
+                    <i class="ph-bold ph-linkedin-logo text-xl md:text-2xl"></i>
+                </a>
+                <button onclick="openContactModal()" class="inline-flex items-center justify-center px-4 py-2 md:px-6 md:py-2 border-4 border-pm-dark rounded-full font-bold text-pm-dark bg-pm-yellow hover:bg-pm-green transition-colors shadow-brutal hover:shadow-brutal-hover hover:translate-y-1 active:translate-y-2 active:shadow-none duration-200">
+                    <span class="hidden sm:inline">Say Hello</span><span class="sm:hidden">Hello</span> <i class="ph-bold ph-hand-waving ml-2 text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 lg:pt-48 pb-20 overflow-hidden">
+        <section id="about" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            
+            <!-- Floating Decorative Infographics -->
+            <div class="hidden lg:block absolute top-10 left-0 animate-float opacity-90 z-10">
+                <svg class="w-16 h-16 drop-shadow-[4px_4px_0_#2D334A] transform -rotate-12" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 15 C30 15 20 30 20 45 C20 60 35 65 35 75 L65 75 C65 65 80 60 80 45 C80 30 70 15 50 15 Z" fill="#FFD803" stroke="#2D334A" stroke-width="4" stroke-linejoin="round"/>
+                    <path d="M40 75 L60 75 L55 85 L45 85 Z" fill="#A7F3D0" stroke="#2D334A" stroke-width="4" stroke-linejoin="round"/>
+                    <path d="M45 85 L55 85 L50 90 Z" fill="#2D334A"/>
+                </svg>
+            </div>
+            <div class="hidden lg:block absolute bottom-20 right-10 animate-float-delayed opacity-90 z-10">
+                <svg class="w-20 h-20 drop-shadow-[4px_4px_0_#2D334A] transform rotate-12" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="35" fill="#FFFFFE" stroke="#2D334A" stroke-width="4"/>
+                    <circle cx="50" cy="50" r="20" fill="#FFA8CA" stroke="#2D334A" stroke-width="4"/>
+                    <circle cx="50" cy="50" r="6" fill="#2D334A"/>
+                    <path d="M50 50 L85 15" stroke="#2D334A" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M85 15 L70 15 L85 30 Z" fill="#FFD803" stroke="#2D334A" stroke-width="4" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-8 reveal">
+                    
+                    <!-- Targeting Badge -->
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 border-4 border-pm-dark rounded-full bg-pm-blue text-pm-dark font-bold shadow-brutal animate-float-fast transform -rotate-2">
+                        <i class="ph-fill ph-rocket-launch text-2xl text-pm-pink drop-shadow-[2px_2px_0_#2D334A]"></i>
+                        <span>Product Professional</span>
+                    </div>
+                    
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-pm-dark leading-[1.1] tracking-tight">
+                        Business Analyst turning <span class="text-transparent bg-clip-text bg-gradient-to-r from-pm-pink to-pm-purple">complex needs</span> into scalable <span class="bg-pm-yellow px-2 border-4 border-pm-dark rounded-xl shadow-brutal inline-block transform rotate-1">products.</span>
+                    </h1>
+                    
+                    <p class="text-xl text-pm-dark/80 font-medium leading-relaxed bg-white/50 backdrop-blur-sm p-6 border-2 border-pm-dark rounded-2xl border-dashed">
+                        Product professional and Business Analyst with 4+ years of experience driving 0-to-1 launches and scaling digital products. I specialize in discovery, Agile delivery, and translating complex needs into elegant solutions. My focus is on measurable impact—delivering <strong class="text-pm-dark font-extrabold">10x MAU growth</strong>, a <strong class="text-pm-dark font-extrabold">50% higher win probability</strong>, and unlocking <strong class="text-pm-dark font-extrabold">22,000+ engineering hours</strong>. I build products people love and cultures where teams thrive.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <button onclick="openContactModal()" class="flex items-center gap-2 px-8 py-4 bg-pm-dark border-4 border-pm-dark rounded-2xl text-xl font-bold text-white shadow-[6px_6px_0px_0px_#FFD803] hover:-translate-y-1 hover:shadow-[10px_10px_0px_0px_#FFD803] transition-all">
+                            Say Hello <i class="ph-bold ph-hand-waving"></i>
+                        </button>
+                        <button onclick="revealAndCopyPhone(event, this)" class="flex items-center gap-2 px-8 py-4 bg-pm-green border-4 border-pm-dark rounded-2xl text-xl font-bold text-pm-dark shadow-[6px_6px_0px_0px_#2D334A] hover:-translate-y-1 hover:shadow-[10px_10px_0px_0px_#2D334A] transition-all">
+                            <i class="ph-bold ph-phone text-2xl"></i> <span class="phone-text">Call Me</span>
+                        </button>
+                    </div>
                 </div>
+
+                <!-- RIGHT COLUMN: Profile Photo -->
+                <div class="lg:col-span-5 flex justify-center lg:justify-end reveal delay-200 relative mt-10 lg:mt-0 z-20">
+                    <!-- Background illustrative shape -->
+                    <div class="absolute inset-0 bg-pm-green border-4 border-pm-dark rounded-full transform rotate-6 scale-105 z-0 animate-blob"></div>
+                    
+                    <div class="relative z-10 p-2 bg-white border-4 border-pm-dark rounded-[3rem] shadow-brutal-lg transform -rotate-3 hover:rotate-0 transition-transform duration-500">
+                        <img src="DOC-20260925-WA0000(1).png" onerror="this.src='https://placehold.co/400x500/B19CD9/2D334A?text=Ajay+Yadav'" alt="Ajay Yadav" class="rounded-[2.5rem] w-full max-w-md object-cover aspect-[4/5] border-4 border-pm-dark relative z-10">
+                        
+                        <!-- Floating Tag 1: Duke Certification -->
+                        <div class="absolute -top-6 -right-6 md:-right-10 bg-pm-pink border-4 border-pm-dark rounded-2xl p-3 shadow-brutal animate-float-delayed z-20">
+                            <div class="flex items-center gap-2">
+                                <i class="ph-fill ph-certificate text-3xl text-pm-dark"></i>
+                                <div>
+                                    <p class="text-xs font-bold uppercase text-pm-dark/70">Duke CE</p>
+                                    <p class="text-sm md:text-base font-extrabold text-pm-dark leading-tight">Certified PM</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Tag 2: Delivered KPI -->
+                        <div class="absolute -bottom-6 -left-6 md:-left-10 bg-pm-yellow border-4 border-pm-dark rounded-2xl p-4 shadow-brutal animate-float z-20">
+                            <div class="flex items-center gap-3">
+                                <i class="ph-duotone ph-trend-up text-4xl text-pm-dark"></i>
+                                <div>
+                                    <p class="text-sm font-bold uppercase text-pm-dark/70">Delivered</p>
+                                    <p class="text-xl md:text-2xl font-extrabold text-pm-dark">10x Growth</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Tag 3: Experience -->
+                        <div class="absolute bottom-16 -right-4 md:-right-8 bg-white border-4 border-pm-dark rounded-xl p-2 shadow-brutal animate-float-fast z-20 transform rotate-3 flex items-center gap-2">
+                            <i class="ph-fill ph-briefcase text-pm-blue text-xl"></i>
+                            <span class="font-bold text-pm-dark whitespace-nowrap">4+ Yrs Exp</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="impact" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-32 reveal">
+            <div class="flex items-center gap-4 mb-8">
+                <i class="ph-duotone ph-lightning text-5xl text-pm-yellow animate-pulse"></i>
+                <h2 class="text-4xl font-extrabold text-pm-dark">Proven Impact at Scale</h2>
+            </div>
+            
+            <p class="text-pm-dark/70 font-bold mb-6 flex items-center gap-2"><i class="ph-bold ph-cursor-click"></i> Click cards to reveal product strategy</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+                <!-- Metric 1 -->
+                <details class="group bg-pm-purple border-4 border-pm-dark rounded-2xl shadow-brutal hover:-translate-y-2 hover:shadow-brutal-lg transition-all duration-300 cursor-pointer overflow-hidden">
+                    <summary class="p-6 list-none [&::-webkit-details-marker]:hidden focus:outline-none relative">
+                        <div class="bg-white border-4 border-pm-dark rounded-full w-14 h-14 flex items-center justify-center mb-4 group-hover:animate-wiggle">
+                            <i class="ph-duotone ph-users text-3xl text-pm-dark"></i>
+                        </div>
+                        <p class="text-5xl font-black text-pm-dark mb-2">10x</p>
+                        <p class="text-lg font-bold text-pm-dark/90 leading-tight pr-6">Growth in Monthly Active Users (MAU)</p>
+                        <i class="ph-bold ph-caret-down absolute bottom-6 right-6 text-pm-dark transition-transform duration-300 group-open:-rotate-180"></i>
+                    </summary>
+                    <div class="p-6 pt-0 border-t-2 border-dashed border-pm-dark/20 text-sm font-medium text-pm-dark/90 bg-white/40">
+                        Led discovery and synthesized user feedback to identify severe friction points in a legacy QA platform. Executed a strategic UI/UX overhaul that transformed the user journey, eliminating drop-offs and driving a 10x surge in adoption.
+                    </div>
+                </details>
                 
-                <!-- Tags -->
-                <div class="absolute bottom-10 -left-2 md:-left-6 z-20 bg-pm-yellow border-3 border-pm-dark px-4 py-2 rounded-lg shadow-neo-sm transform -rotate-3">
-                    <p class="text-sm font-black uppercase">Delivered</p>
-                    <p class="text-xl font-black">10x Growth</p>
+                <!-- Metric 2 -->
+                <details class="group bg-pm-green border-4 border-pm-dark rounded-2xl shadow-brutal hover:-translate-y-2 hover:shadow-brutal-lg transition-all duration-300 cursor-pointer overflow-hidden delay-100">
+                    <summary class="p-6 list-none [&::-webkit-details-marker]:hidden focus:outline-none relative">
+                        <div class="bg-white border-4 border-pm-dark rounded-full w-14 h-14 flex items-center justify-center mb-4 group-hover:animate-wiggle">
+                            <i class="ph-duotone ph-target text-3xl text-pm-dark"></i>
+                        </div>
+                        <p class="text-5xl font-black text-pm-dark mb-2">50%</p>
+                        <p class="text-lg font-bold text-pm-dark/90 leading-tight pr-6">Increase in Win Probability</p>
+                        <i class="ph-bold ph-caret-down absolute bottom-6 right-6 text-pm-dark transition-transform duration-300 group-open:-rotate-180"></i>
+                    </summary>
+                    <div class="p-6 pt-0 border-t-2 border-dashed border-pm-dark/20 text-sm font-medium text-pm-dark/90 bg-white/40">
+                        Mapped fragmented cross-functional sales workflows and architected a unified digital workspace. By seamlessly integrating MS Dynamics 365 and Nintex K2, I reduced pipeline friction and increased new opportunity win probability by 50%.
+                    </div>
+                </details>
+
+                <!-- Metric 3 -->
+                <details class="group bg-pm-blue border-4 border-pm-dark rounded-2xl shadow-brutal hover:-translate-y-2 hover:shadow-brutal-lg transition-all duration-300 cursor-pointer overflow-hidden delay-200">
+                    <summary class="p-6 list-none [&::-webkit-details-marker]:hidden focus:outline-none relative">
+                        <div class="bg-white border-4 border-pm-dark rounded-full w-14 h-14 flex items-center justify-center mb-4 group-hover:animate-wiggle">
+                            <i class="ph-duotone ph-money text-3xl text-pm-dark"></i>
+                        </div>
+                        <p class="text-5xl font-black text-pm-dark mb-2">85%</p>
+                        <p class="text-lg font-bold text-pm-dark/90 leading-tight pr-6">Reduction in Travel & Ops Costs</p>
+                        <i class="ph-bold ph-caret-down absolute bottom-6 right-6 text-pm-dark transition-transform duration-300 group-open:-rotate-180"></i>
+                    </summary>
+                    <div class="p-6 pt-0 border-t-2 border-dashed border-pm-dark/20 text-sm font-medium text-pm-dark/90 bg-white/40">
+                        Owned the 0-to-1 development of the FSTP Monitoring App. Shifted operations from reactive to proactive by integrating real-time telemetry dashboards, which slashed necessary on-site visits and resulted in an 85% drop in travel OPEX.
+                    </div>
+                </details>
+
+                <!-- Metric 4 -->
+                <details class="group bg-pm-pink border-4 border-pm-dark rounded-2xl shadow-brutal hover:-translate-y-2 hover:shadow-brutal-lg transition-all duration-300 cursor-pointer overflow-hidden delay-300">
+                    <summary class="p-6 list-none [&::-webkit-details-marker]:hidden focus:outline-none relative">
+                        <div class="bg-white border-4 border-pm-dark rounded-full w-14 h-14 flex items-center justify-center mb-4 group-hover:animate-wiggle">
+                            <i class="ph-duotone ph-clock-clockwise text-3xl text-pm-dark"></i>
+                        </div>
+                        <p class="text-5xl font-black text-pm-dark mb-2">22k+</p>
+                        <p class="text-lg font-bold text-pm-dark/90 leading-tight pr-6">Engineering Hours Unlocked/Yr</p>
+                        <i class="ph-bold ph-caret-down absolute bottom-6 right-6 text-pm-dark transition-transform duration-300 group-open:-rotate-180"></i>
+                    </summary>
+                    <div class="p-6 pt-0 border-t-2 border-dashed border-pm-dark/20 text-sm font-medium text-pm-dark/90 bg-white/40">
+                        Defined and executed a targeted global Go-to-Market (GTM) strategy for a CAD standardization tool. Scaled adoption across 5 international markets, yielding a 15% efficiency lift that unlocks 22,000+ engineering hours annually.
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section id="experience" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-32">
+            <div class="flex items-center gap-4 mb-12 reveal">
+                <i class="ph-duotone ph-briefcase text-5xl text-pm-purple animate-bounce"></i>
+                <h2 class="text-4xl font-extrabold text-pm-dark">Product Leadership Experience</h2>
+            </div>
+
+            <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-pm-dark before:border-r-4 before:border-dashed before:border-pm-dark before:z-0">
+                
+                <!-- Role 1: Current -->
+                <div class="relative flex items-center justify-between md:odd:flex-row-reverse group is-active reveal">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full border-4 border-pm-dark bg-pm-yellow shadow-brutal shrink-0 md:order-1 z-10 transition-transform group-hover:scale-110">
+                        <i class="ph-fill ph-crown text-2xl text-pm-dark"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] md:order-0 bg-white border-4 border-pm-dark rounded-2xl p-6 shadow-brutal hover:shadow-brutal-lg transition-all duration-300 group-hover:-translate-y-1">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="text-2xl font-black text-pm-dark">Business Analyst</h3>
+                                <p class="text-lg font-bold text-pm-purple">Ramboll India</p>
+                            </div>
+                            <span class="px-3 py-1 border-2 border-pm-dark rounded-full bg-gray-100 text-sm font-bold">2026 - Present</span>
+                        </div>
+                        <div class="mb-4 inline-flex items-center gap-2 px-3 py-1 bg-pm-green border-2 border-pm-dark rounded-lg text-sm font-bold transform -rotate-1 shadow-[2px_2px_0px_0px_#2D334A]">
+                            <i class="ph-fill ph-target text-pm-dark"></i>
+                            Acting Product Owner
+                        </div>
+                        <ul class="space-y-3 text-pm-dark/80 font-medium">
+                            <li class="flex items-start">
+                                <i class="ph-bold ph-check-circle text-pm-pink mt-1 mr-2 text-xl"></i>
+                                <span><strong class="text-pm-dark">0-to-1 MVP Delivery:</strong> Orchestrated the rapid launch of the Master Intake System MVP, championing Agile frameworks to drive early business value.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ph-bold ph-check-circle text-pm-pink mt-1 mr-2 text-xl"></i>
+                                <span><strong class="text-pm-dark">Workflow Consolidation:</strong> Increased win probability across new opportunities by <strong>50%</strong> by merging fragmented workflows into MS Dynamics 365.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ph-bold ph-check-circle text-pm-pink mt-1 mr-2 text-xl"></i>
+                                <span><strong class="text-pm-dark">Growth & Adoption:</strong> Accelerated TTM by 20% for the Tech Portfolio Board via user research, increasing adoption by eliminating drop-offs.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- NEW Metric Card -->
+                    <div class="hidden md:flex w-[calc(50%-3rem)] md:order-2 justify-center items-center">
+                        <div class="bg-pm-blue border-4 border-pm-dark rounded-[2rem] p-8 shadow-brutal flex flex-col items-center text-center transform -rotate-3 group-hover:rotate-0 transition-all duration-300 group-hover:scale-105">
+                            <i class="ph-duotone ph-target text-6xl text-pm-dark mb-3 group-hover:animate-wiggle"></i>
+                            <span class="text-6xl font-black text-pm-dark mb-2">50%</span>
+                            <span class="text-2xl font-bold text-pm-dark/80 leading-tight">Increase in<br>Win Probability</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="absolute top-20 -right-2 md:-right-6 z-20 bg-white border-3 border-pm-dark px-4 py-2 rounded-lg shadow-neo-sm transform rotate-6">
-                    <p class="font-bold">💼 4+ Yrs Exp</p>
+
+                <!-- Role 2: Lead -->
+                <div class="relative flex items-center justify-between md:odd:flex-row-reverse group reveal delay-100">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full border-4 border-pm-dark bg-pm-blue shadow-brutal shrink-0 md:order-1 z-10 transition-transform group-hover:scale-110">
+                        <i class="ph-fill ph-rocket text-2xl text-pm-dark"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] md:order-0 bg-white border-4 border-pm-dark rounded-2xl p-6 shadow-brutal hover:shadow-brutal-lg transition-all duration-300 group-hover:-translate-y-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-black text-pm-dark">Digital Product Lead</h3>
+                                <p class="text-lg font-bold text-pm-blue">Ramboll India</p>
+                            </div>
+                            <span class="px-3 py-1 border-2 border-pm-dark rounded-full bg-gray-100 text-sm font-bold">2025</span>
+                        </div>
+                        <ul class="space-y-3 text-pm-dark/80 font-medium">
+                            <li class="flex items-start">
+                                <i class="ph-bold ph-check-circle text-pm-yellow mt-1 mr-2 text-xl"></i>
+                                <span><strong class="text-pm-dark">Product Turnaround:</strong> Drove a <strong>10x surge in MAU</strong> for a legacy QA Tool by synthesizing user feedback into a strategic UI/UX overhaul.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ph-bold ph-check-circle text-pm-yellow mt-1 mr-2 text-xl"></i>
+                                <span><strong class="text-pm-dark">GTM Strategy:</strong> Unlocked <strong>22,000+ engineering hours</strong> annually by executing a global GTM strategy across 5 international geographies.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ph-bold ph-check-circle text-pm-yellow mt-1 mr-2 text-xl"></i>
+                                <span><strong class="text-pm-dark">Platform Architecture:</strong> Delivered a 0-to-1 Build Management System via Power Platform, accelerating cadence by 30%.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- NEW Metric Card -->
+                    <div class="hidden md:flex w-[calc(50%-3rem)] md:order-2 justify-center items-center">
+                        <div class="bg-pm-yellow border-4 border-pm-dark rounded-[2rem] p-8 shadow-brutal flex flex-col items-center text-center transform rotate-3 group-hover:rotate-0 transition-all duration-300 group-hover:scale-105">
+                            <i class="ph-duotone ph-users-three text-6xl text-pm-dark mb-3 group-hover:animate-wiggle"></i>
+                            <span class="text-6xl font-black text-pm-dark mb-2">10x</span>
+                            <span class="text-2xl font-bold text-pm-dark/80 leading-tight">Surge in<br>Monthly Active Users</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="absolute top-2 left-0 md:-left-4 z-20 bg-pm-emerald border-3 border-pm-dark px-4 py-2 rounded-lg shadow-neo-sm transform -rotate-2">
-                    <p class="font-bold">🎓 Duke CE Certified</p>
+
+                <!-- Role 3: Analyst -->
+                <div class="relative flex items-center justify-between md:odd:flex-row-reverse group reveal delay-200">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full border-4 border-pm-dark bg-pm-pink shadow-brutal shrink-0 md:order-1 z-10 transition-transform group-hover:scale-110">
+                        <i class="ph-fill ph-magnifying-glass text-2xl text-pm-dark"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] md:order-0 bg-white border-4 border-pm-dark rounded-2xl p-6 shadow-brutal hover:shadow-brutal-lg transition-all duration-300 group-hover:-translate-y-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-black text-pm-dark">Product Analyst</h3>
+                                <p class="text-lg font-bold text-pm-pink">Ramboll India</p>
+                            </div>
+                            <span class="px-3 py-1 border-2 border-pm-dark rounded-full bg-gray-100 text-sm font-bold">2022 - 2024</span>
+                        </div>
+                        <ul class="space-y-3 text-pm-dark/80 font-medium">
+                            <li class="flex items-start">
+                                <i class="ph-bold ph-check-circle text-pm-green mt-1 mr-2 text-xl"></i>
+                                <span><strong class="text-pm-dark">Agile Execution:</strong> Improved sprint efficiency by <strong>30%</strong> and accelerated delivery by 15% by establishing rigorous backlog refinement protocols.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ph-bold ph-check-circle text-pm-green mt-1 mr-2 text-xl"></i>
+                                <span><strong class="text-pm-dark">Design Systems:</strong> Slashed handoff time by architecting the team's first Design Language System with reusable components.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- NEW Metric Card -->
+                    <div class="hidden md:flex w-[calc(50%-3rem)] md:order-2 justify-center items-center">
+                        <div class="bg-pm-green border-4 border-pm-dark rounded-[2rem] p-8 shadow-brutal flex flex-col items-center text-center transform -rotate-3 group-hover:rotate-0 transition-all duration-300 group-hover:scale-105">
+                            <i class="ph-duotone ph-lightning text-6xl text-pm-dark mb-3 group-hover:animate-wiggle"></i>
+                            <span class="text-6xl font-black text-pm-dark mb-2">30%</span>
+                            <span class="text-2xl font-bold text-pm-dark/80 leading-tight">Lift in Sprint<br>Efficiency</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Moved Education Section here -->
+        <section id="education" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 mb-10">
+            <!-- Education Banner -->
+            <div class="bg-pm-purple border-4 border-pm-dark rounded-3xl p-8 shadow-brutal flex flex-col md:flex-row items-center justify-between gap-8 reveal">
+                <div class="flex items-center gap-6">
+                    <div class="animate-wiggle shrink-0">
+                        <svg class="w-16 h-16 md:w-20 md:h-20 drop-shadow-[4px_4px_0_#2D334A]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 40 L50 20 L90 40 L50 60 Z" fill="#FFD803" stroke="#2D334A" stroke-width="4" stroke-linejoin="round"/>
+                            <path d="M30 50 L30 70 C30 80 70 80 70 70 L70 50" fill="#FFFFFE" stroke="#2D334A" stroke-width="4" stroke-linejoin="round"/>
+                            <path d="M90 40 L90 65" stroke="#2D334A" stroke-width="4" stroke-linecap="round"/>
+                            <circle cx="90" cy="70" r="6" fill="#A7F3D0" stroke="#2D334A" stroke-width="4"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black text-pm-dark">PG Certificate in Product Management</h3>
+                        <p class="text-lg font-bold text-pm-dark/80">Duke Corporate Education, USA • Score: 95.4%</p>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="bg-white border-2 border-pm-dark px-3 py-1 rounded-full text-sm font-bold shadow-[2px_2px_0px_0px_#2D334A]">AI Product Mgmt</span>
+                            <span class="bg-white border-2 border-pm-dark px-3 py-1 rounded-full text-sm font-bold shadow-[2px_2px_0px_0px_#2D334A]">Growth Product Mgmt</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-left md:text-right border-t-4 md:border-t-0 md:border-l-4 border-pm-dark/20 pt-4 md:pt-0 md:pl-8 w-full md:w-auto">
+                    <p class="font-bold text-pm-dark">M.Tech Production Eng. <br><span class="text-sm">NIT Kurukshetra (8.55 GPA)</span></p>
+                    <p class="font-bold text-pm-dark mt-2">B.Tech Mechanical Eng. <br><span class="text-sm">MDU (7.69 GPA)</span></p>
                 </div>
             </div>
 
-        </div>
-    </section>
+            <!-- Embedded Certificate -->
+            <div class="mt-8 bg-white border-4 border-pm-dark rounded-[2rem] p-4 shadow-brutal reveal delay-100 max-w-3xl mx-auto hover:-translate-y-1 hover:shadow-brutal-lg transition-all duration-300">
+                <div class="border-2 border-dashed border-pm-dark/20 rounded-xl overflow-hidden">
+                    <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/155370658" alt="Duke CE Product Management Certificate" class="w-full h-auto object-cover">
+                </div>
+            </div>
+        </section>
 
-    <!-- ========== CAREER METRICS TIMELINE ========== -->
-<!-- ... existing code ... -->
+        <section id="projects" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-32">
+            <div class="flex items-center gap-4 mb-12 reveal">
+                <i class="ph-duotone ph-presentation-chart text-5xl text-pm-pink animate-wiggle"></i>
+                <h2 class="text-4xl font-extrabold text-pm-dark">Featured Case Study</h2>
+            </div>
+
+            <!-- Cab Connect Project -->
+            <div class="bg-white border-4 border-pm-dark rounded-[2rem] shadow-brutal-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2 reveal">
+                <!-- Top Colorful Header -->
+                <div class="bg-pm-yellow border-b-4 border-pm-dark p-8 md:p-12 relative overflow-hidden">
+                    <div class="absolute -right-4 -top-10 animate-float opacity-30">
+                        <svg class="w-48 h-48 md:w-64 md:h-64 transform rotate-12" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 60 L15 45 L30 30 L70 30 L85 45 L85 60 Z" fill="#FFFFFE" stroke="#2D334A" stroke-width="4" stroke-linejoin="round"/>
+                            <circle cx="30" cy="65" r="8" fill="#2D334A"/>
+                            <circle cx="70" cy="65" r="8" fill="#2D334A"/>
+                            <path d="M30 45 L70 45" stroke="#2D334A" stroke-width="4" stroke-linecap="round"/>
+                            <path d="M35 30 L35 45 M65 30 L65 45 M50 30 L50 45" stroke="#2D334A" stroke-width="4" stroke-linecap="round"/>
+                            <rect x="42" y="20" width="16" height="10" fill="#FFA8CA" stroke="#2D334A" stroke-width="4" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div class="flex items-center gap-6">
+                            <div class="h-20 w-20 bg-pm-dark rounded-2xl flex items-center justify-center shadow-brutal transform -rotate-3">
+                                <i class="ph-fill ph-car-profile text-pm-yellow text-4xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-4xl font-black text-pm-dark mb-1">Cab-Connect</h3>
+                                <p class="text-xl font-bold text-pm-dark/70">Ride Comparison Aggregator App</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 flex-wrap">
+                            <a href="https://www.figma.com/make/VzXVJcTNpzHQExEmZpzA05/Create-High-Fidelity-Prototype?fullscreen=1&t=eZ3xW8QXAXjV7Stw-1&code-node-id=0-6" target="_blank" class="px-4 py-2 bg-white border-4 border-pm-dark text-pm-dark font-bold rounded-full shadow-[2px_2px_0px_0px_#2D334A] flex items-center gap-2 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_#2D334A] transition-all cursor-pointer">
+                                <i class="ph-fill ph-figma-logo text-xl text-purple-500"></i> Figma
+                            </a>
+                            <a href="https://docs.google.com/presentation/d/1g6Aj1pqLMxpTy2tPgipU5yFgE2N_AcKXbMQ2fBuJhYs/edit?slide=id.g3a8eab30c01_2_0#slide=id.g3a8eab30c01_2_0" target="_blank" class="px-4 py-2 bg-white border-4 border-pm-dark text-pm-dark font-bold rounded-full shadow-[2px_2px_0px_0px_#2D334A] flex items-center gap-2 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_#2D334A] transition-all cursor-pointer">
+                                <i class="ph-fill ph-users-three text-xl text-blue-500"></i> UX Research
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Body -->
+                <div class="p-8 md:p-12 grid grid-cols-1 md:grid-cols-3 gap-12 bg-pm-light">
+                    <!-- The Problem -->
+                    <div class="group">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 bg-red-200 border-4 border-pm-dark rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_#2D334A] group-hover:animate-wiggle">
+                                <i class="ph-bold ph-warning-circle text-2xl text-red-600"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-pm-dark">The Problem</h4>
+                        </div>
+                        <p class="text-lg text-pm-dark/80 font-medium leading-relaxed">Users face a time-consuming, manual comparison of prices and wait times across multiple ride-hailing apps, leading to severe decision fatigue, higher costs, and booking friction.</p>
+                    </div>
+                    
+                    <!-- The Solution -->
+                    <div class="group">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 bg-pm-blue border-4 border-pm-dark rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_#2D334A] group-hover:animate-wiggle">
+                                <i class="ph-bold ph-lightbulb text-2xl text-pm-dark"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-pm-dark">The Solution</h4>
+                        </div>
+                        <p class="text-lg text-pm-dark/80 font-medium leading-relaxed">Validated the core user problem through comprehensive primary research. Designed the end-to-end UX, delivering high-fidelity prototypes and defining a strictly prioritized product backlog.</p>
+                    </div>
+                    
+                    <!-- The Outcome -->
+                    <div class="group">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 bg-pm-green border-4 border-pm-dark rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_#2D334A] group-hover:animate-wiggle">
+                                <i class="ph-bold ph-check-fat text-2xl text-pm-dark"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-pm-dark">The Outcome</h4>
+                        </div>
+                        <p class="text-lg text-pm-dark/80 font-medium leading-relaxed">Produced a clickable prototype and full PRD specs. Formulated a comprehensive growth strategy encompassing a defined <strong class="bg-pm-yellow px-1 border-2 border-pm-dark rounded">North Star Metric</strong> and the <strong>AARRR funnel framework</strong>.</p>
+                    </div>
+                    
+                    <!-- Embedded Figma Prototype -->
+                    <div class="md:col-span-3 mt-8 pt-10 border-t-4 border-dashed border-pm-dark/20 group">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 bg-pm-purple border-4 border-pm-dark rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_#2D334A] group-hover:animate-wiggle">
+                                <i class="ph-bold ph-figma-logo text-2xl text-pm-dark"></i>
+                            </div>
+                            <h4 class="text-2xl font-black text-pm-dark">Interactive Prototype</h4>
+                            <span class="hidden md:inline-block ml-2 px-3 py-1 bg-white border-2 border-pm-dark rounded-full text-xs font-bold text-pm-dark shadow-[2px_2px_0_#2D334A] animate-bounce">Try it out!</span>
+                        </div>
+                        
+                        <!-- Iframe Container with Correct Figma Embed Format -->
+                        <div class="w-full h-[500px] md:h-[650px] border-4 border-pm-dark rounded-[2rem] overflow-hidden shadow-brutal-lg bg-white hover:-translate-y-1 transition-transform duration-300">
+                            <iframe 
+                                style="border: none;" 
+                                width="100%" 
+                                height="100%" 
+                                src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fmake%2FVzXVJcTNpzHQExEmZpzA05%2FCreate-High-Fidelity-Prototype%3Ffullscreen%3D1%26t%3DeZ3xW8QXAXjV7Stw-1%26code-node-id%3D0-6" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-32 mb-20">
+            <div class="flex items-center gap-4 mb-12 reveal">
+                <i class="ph-duotone ph-toolbox text-5xl text-pm-blue animate-float"></i>
+                <h2 class="text-4xl font-extrabold text-pm-dark">Core Competencies in Action</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Column 1 -->
+                <div class="bg-white border-4 border-pm-dark rounded-3xl p-6 lg:p-8 shadow-brutal transition-all duration-300 reveal delay-100 h-fit">
+                    <div class="h-16 w-16 bg-pm-pink border-4 border-pm-dark rounded-2xl flex items-center justify-center shadow-brutal transform -rotate-6 mb-8">
+                        <i class="ph-bold ph-strategy text-3xl text-pm-dark"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-pm-dark mb-6">Strategy & Discovery</h3>
+                    
+                    <div class="space-y-3">
+                        <details class="group border-2 border-pm-dark rounded-xl bg-white shadow-[2px_2px_0px_0px_#2D334A] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#2D334A] transition-all duration-200 overflow-hidden cursor-pointer">
+                            <summary class="flex items-center font-bold p-3 text-pm-dark list-none [&::-webkit-details-marker]:hidden focus:outline-none">
+                                <i class="ph-bold ph-caret-right text-pm-pink mr-2 group-open:rotate-90 transition-transform duration-300"></i> Product Vision & Strategy
+                            </summary>
+                            <div class="p-4 pt-2 text-sm font-medium text-pm-dark/80 border-t-2 border-dashed border-pm-dark/10 bg-gray-50/80">
+                                <div class="inline-flex items-center gap-1.5 bg-pm-pink/20 text-pm-dark text-[10px] uppercase tracking-wider font-black px-2 py-1 rounded mb-2 border border-pm-dark/20">
+                                    <i class="ph-fill ph-briefcase"></i> Digital Product Lead
+                                </div>
+                                <p>Drove a <strong class="text-pm-dark font-extrabold">10x surge in MAU</strong> for a legacy QA Tool by synthesizing user feedback to execute a strategic, platform-wide UI/UX overhaul.</p>
+                            </div>
+                        </details>
+
+                        <details class="group border-2 border-pm-dark rounded-xl bg-white shadow-[2px_2px_0px_0px_#2D334A] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#2D334A] transition-all duration-200 overflow-hidden cursor-pointer">
+                            <summary class="flex items-center font-bold p-3 text-pm-dark list-none [&::-webkit-details-marker]:hidden focus:outline-none">
+                                <i class="ph-bold ph-caret-right text-pm-pink mr-2 group-open:rotate-90 transition-transform duration-300"></i> User Research & Discovery
+                            </summary>
+                            <div class="p-4 pt-2 text-sm font-medium text-pm-dark/80 border-t-2 border-dashed border-pm-dark/10 bg-gray-50/80">
+                                <div class="inline-flex items-center gap-1.5 bg-pm-yellow/40 text-pm-dark text-[10px] uppercase tracking-wider font-black px-2 py-1 rounded mb-2 border border-pm-dark/20">
+                                    <i class="ph-fill ph-crown"></i> Business Analyst
+                                </div>
+                                <p>Accelerated time-to-market by <strong class="text-pm-dark font-extrabold">20%</strong> for the 0-to-1 launch of the Tech Portfolio Board by leveraging qualitative user research to streamline UI development.</p>
+                            </div>
+                        </details>
+
+                        <details class="group border-2 border-pm-dark rounded-xl bg-white shadow-[2px_2px_0px_0px_#2D334A] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#2D334A] transition-all duration-200 overflow-hidden cursor-pointer">
+                            <summary class="flex items-center font-bold p-3 text-pm-dark list-none [&::-webkit-details-marker]:hidden focus:outline-none">
+                                <i class="ph-bold ph-caret-right text-pm-pink mr-2 group-open:rotate-90 transition-transform duration-300"></i> Business Goal Alignment
+                            </summary>
+                            <div class="p-4 pt-2 text-sm font-medium text-pm-dark/80 border-t-2 border-dashed border-pm-dark/10 bg-gray-50/80">
+                                <div class="inline-flex items-center gap-1.5 bg-pm-yellow/40 text-pm-dark text-[10px] uppercase tracking-wider font-black px-2 py-1 rounded mb-2 border border-pm-dark/20">
+                                    <i class="ph-fill ph-crown"></i> Business Analyst
+                                </div>
+                                <p>Increased win probability across new opportunities by <strong class="text-pm-dark font-extrabold">50%</strong> by consolidating fragmented workflows into a single workspace integrated with MS Dynamics 365.</p>
+                            </div>
+                        </details>
+
+                        <details class="group border-2 border-pm-dark rounded-xl bg-white shadow-[2px_2px_0px_0px_#2D334A] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#2D334A] transition-all duration-200 overflow-hidden cursor-pointer">
+                            <summary class="flex items-center font-bold p-3 text-pm-dark list-none [&::-webkit-details-marker]:hidden focus:outline-none">
+                                <i class="ph-bold ph-caret-right text-pm-pink mr-2 group-open:rotate-90 transition-transform duration-300"></i> Feature Scoping & Prioritization
+                            </summary>
+                            <div class="p-4 pt-2 text-sm font-medium text-pm-dark/80 border-t-2 border-dashed border-pm-dark/10 bg-gray-50/80">
+                                <div class="inline-flex items-center gap-1.5 bg-pm-blue/40 text-pm-dark text-[10px] uppercase tracking-wider font-black px-2 py-1 rounded mb-2 border border-pm-dark/20">
+                                    <i class="ph-fill ph-rocket"></i> Product Project
+                                </div>
+                                <p>For Cab-Connect, validated the core user problem through research, then defined the end-to-end UX by delivering prototypes and a <strong class="text-pm-dark font-extrabold">strictly prioritized product backlog</strong>.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="bg-pm-dark border-4 border-pm-dark rounded-3xl p-6 lg:p-8 shadow-brutal transition-all duration-300 reveal delay-200 h-fit">
+                    <div class="h-16 w-16 bg-pm-green border-4 border-white rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_#FFFFFF] transform rotate-3 mb-8">
+                        <i class="ph-bold ph-kanban text-3xl text-pm-dark"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-white mb-6">Agile Delivery</h3>
+                    
+                    <div class="space-y-3">
+                        <details class="group border-2 border-white/20 rounded-xl bg-pm-dark shadow-[2px_2px_0px_0px_#FFFFFF] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#FFFFFF] transition-all duration-200 overflow-hidden cursor-pointer text-white">
+                            <summary class="flex items-center font-bold p-3 list-none [&::-webkit-details-marker]:hidden focus:outline-none">
+                                <i class="ph-bold ph-caret-right text-pm-green mr-2 group-open:rotate-90 transition-transform duration-300"></i> Agile & Scrum Frameworks
+                            </summary>
+                            <div class="p-4 pt-2 text-sm font-medium text-white/80 border-t-2 border-dashed border-white/10 bg-white/5">
+                                <div class="inline-flex items-center gap-1.5 bg-pm-yellow text-pm-dark text-[10px] uppercase tracking-wider font-black px-2 py-1 rounded mb-2 border border-pm-dark">
+                                    <i class="ph-fill ph-crown"></i> Acting Product Owner
+                                </div>
+                                <p>Orchestrated the rapid, successful launch of the <strong class="text-white font-extrabold">Master Intake System MVP</strong>, championing Agile frameworks and leading cross-functional ceremonies.</p>
+                            </div>
+                        </details>
+
+                        <details class="group border-2 border-white/20 rounded-xl bg-pm-dark shadow-[2px_2px_0px_0px_#FFFFFF] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#FFFFFF] transition-all duration-200 overflow-hidden cursor-pointer text-white">
+                            <summary class="flex items-center font-bold p-3 list-none [&::-webkit-details-marker]:hidden focus:outline-none">
+                                <i class="ph-bold ph-caret-right text-pm-green mr-2 group-open:rotate-90 transition-transform duration-300"></i> Backlog Management
+                            </summary>
+                            <div class="p-4 pt-2 text-sm font-medium text-white/80 border-t-2 border-dashed border-white/10 bg-white/5">
+                                <div class="inline-flex items-center gap-1.5 bg-pm-pink text-pm-dark text-[10px] uppercase tracking-wider font-black px-2 py-1 rounded mb-2 border border-pm-dark">
+                                    <i class="ph-fill ph-magnifying-glass"></i> Product Analyst
+                                </div>
+                                <p>Improved sprint efficiency by <strong class="text-white font-extrabold">30%</strong> by establishing rigorous backlog refinement protocols and standardizing acceptance criteria.</p>
+                            </div>
+                        </details>
+
+                        <details class="group border-2 border-white/20 rounded-xl bg-pm-dark shadow-[2px_2px_0px_0px_#FFFFFF] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#FFFFFF] transition-all duration-200 overflow-hidden cursor-pointer text-white">
+                            <summary class="flex items-center font-bold p-3 list-none [&::-webkit-details-marker]:hidden focus:outline-none">
+                                <i class="ph-bold ph-caret-right text-pm-green mr-2 group-open:rotate-90 transition-transform duration-300"></i> Sprint Planning & Execution
+                            </summary>
+                            <div class="p-4 pt-2 text-sm font-medium text-white/80 border-t-2 border-dashed border-white/10 bg-white/5">
+                                <div class="inline-flex items-center gap-1.5 bg-pm-pink text-pm-dark text-[10px] uppercase tracking-wider font-black px-2 py-1 rounded mb-2 border border-pm-dark">
+                                    <i class="ph-fill ph-magnifying-glass"></i> Product Analyst
+                                </div>
+                                <p>Accelerated feature delivery cadence by <strong class="text-white font-extrabold">15%</strong> by leading Agile ceremonies and proactively unblocking dependencies across cross-functional teams.</p>
+                            </div>
+                        </details>
+
+                        <details class="group border-2 border-white/20 rounded-xl bg-pm-dark shadow-[2px_2px_0px_0px_#FFFFFF] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#FFFFFF] transition-all duration-200 overflow-hidden cursor-pointer text-white">
+                            <summary class="flex items-center font-bold p-3 list-none [&::-webkit-details-marker]:hidden focus:outline-none">
+                                <i class="ph-bold ph-caret-right text-pm-green mr-2 group-open:rotate-90 transition-transform duration-300"></i> Stakeholder Management
+                            </summary>
+                            <div class="p-4 pt-2 text-sm font-medium text-white/80 border-t-2 border-dashed border-white/10 bg-white/5">
+                                <div class="inline-flex items-center gap-1.5 bg-pm-blue text-pm-dark text-[10px] uppercase tracking-wider font-black px-2 py-1 rounded mb-2 border border-pm-dark">
+                                    <i class="ph-fill flex ph-briefcase"></i> Digital Product Lead
+                                </div>
+                                <p>Managed the end-to-end product lifecycle for a 0-to-1 Build Management System—from stakeholder discovery to execution—boosting client satisfaction by <strong class="text-white font-extrabold">15%</strong>.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="bg-white border-4 border-pm-dark rounded-3xl p-6 lg:p-8 shadow-brutal transition-all duration-300 reveal delay-300 h-fit">
+                    <div class="h-16 w-16 bg-pm-yellow border-4 border-pm-dark rounded-2xl flex items-center justify-center shadow-brutal transform rotate-6 mb-8">
+                        <i class="ph-bold ph-database text-3xl text-pm-dark"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-pm-dark mb-6">Data, Design & Tech</h3>
+                    
+                    <div class="space-y-3">
+                        <details class="group border-2 border-pm-dark rounded-xl bg-white shadow-[2px_2px_0px_0px_#2D334A] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#2D334A] transition-all duration-200 overflow-hidden cursor-pointer">
+                            <summary class="flex items-center font-bold p-3 text-pm-dark list-none [&::-webkit-details-marker]:hidden focus:outline-none">
+                                <i class="ph-bold ph-caret-right text-pm-yellow mr-2 group-open:rotate-90 transition-transform duration-300"></i> Data Analysis & KPIs
+                            </summary>
+                            <div class="p-4 pt-2 text-sm font-medium text-pm-dark/80 border-t-2 border-dashed border-pm-dark/10 bg-gray-50/80">
+                                <div class="inline-flex items-center gap-1.5 bg-pm-yellow/40 text-pm-dark text-[10px] uppercase tracking-wider font-black px-2 py-1 rounded mb-2 border border-pm-dark/20">
+                                    <i class="ph-fill ph-crown"></i> Business Analyst
+                                </div>
+                                <p>Increased Meerkat Town user adoption by <strong class="text-pm-dark font-extrabold">20%</strong> by establishing clear product KPIs and executing data-driven iterations to eliminate journey drop-offs.</p>
+                            </div>
+                        </details>
+
+                        <details class="group border-2 border-pm-dark rounded-xl bg-white shadow-[2px_2px_0px_0px_#2D334A] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#2D334A] transition-all duration-200 overflow-hidden cursor-pointer">
+                            <summary class="flex items-center font-bold p-3 text-pm-dark list-none [&::-webkit-details-marker]:hidden focus:outline-none">
+                                <i class="ph-bold ph-caret-right text-pm-yellow mr-2 group-open:rotate-90 transition-transform duration-300"></i> UI/UX Prototyping (Figma)
+                            </summary>
+                            <div class="p-4 pt-2 text-sm font-medium text-pm-dark/80 border-t-2 border-dashed border-pm-dark/10 bg-gray-50/80">
+                                <div class="inline-flex items-center gap-1.5 bg-pm-pink/20 text-pm-dark text-[10px] uppercase tracking-wider font-black px-2 py-1 rounded mb-2 border border-pm-dark/20">
+                                    <i class="ph-fill ph-magnifying-glass"></i> Product Analyst
+                                </div>
+                                <p>Slashed design-to-engineering handoff time by <strong class="text-pm-dark font-extrabold">architecting the team's first Design Language System</strong>, establishing a centralized library of reusable UI components.</p>
+                            </div>
+                        </details>
+
+                        <details class="group border-2 border-pm-dark rounded-xl bg-white shadow-[2px_2px_0px_0px_#2D334A] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#2D334A] transition-all duration-200 overflow-hidden cursor-pointer">
+                            <summary class="flex items-center font-bold p-3 text-pm-dark list-none [&::-webkit-details-marker]:hidden focus:outline-none">
+                                <i class="ph-bold ph-caret-right text-pm-yellow mr-2 group-open:rotate-90 transition-transform duration-300"></i> Azure DevOps & Jira
+                            </summary>
+                            <div class="p-4 pt-2 text-sm font-medium text-pm-dark/80 border-t-2 border-dashed border-pm-dark/10 bg-gray-50/80">
+                                <div class="inline-flex items-center gap-1.5 bg-gray-200 text-pm-dark text-[10px] uppercase tracking-wider font-black px-2 py-1 rounded mb-2 border border-pm-dark/20">
+                                    <i class="ph-fill ph-stack"></i> Cross-Functional
+                                </div>
+                                <p>Utilized extensively to maintain strictly prioritized backlogs, standardize acceptance criteria, and map out sprint cycles—directly contributing to a <strong class="text-pm-dark font-extrabold">30% sprint efficiency lift</strong>.</p>
+                            </div>
+                        </details>
+
+                        <details class="group border-2 border-pm-dark rounded-xl bg-white shadow-[2px_2px_0px_0px_#2D334A] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#2D334A] transition-all duration-200 overflow-hidden cursor-pointer">
+                            <summary class="flex items-center font-bold p-3 text-pm-dark list-none [&::-webkit-details-marker]:hidden focus:outline-none">
+                                <i class="ph-bold ph-caret-right text-pm-yellow mr-2 group-open:rotate-90 transition-transform duration-300"></i> Power Apps & Automate
+                            </summary>
+                            <div class="p-4 pt-2 text-sm font-medium text-pm-dark/80 border-t-2 border-dashed border-pm-dark/10 bg-gray-50/80">
+                                <div class="inline-flex items-center gap-1.5 bg-pm-blue/40 text-pm-dark text-[10px] uppercase tracking-wider font-black px-2 py-1 rounded mb-2 border border-pm-dark/20">
+                                    <i class="ph-fill ph-briefcase"></i> Digital Product Lead
+                                </div>
+                                <p>Delivered a 0-to-1 Build Management System via the Power Platform to optimize resource allocation, <strong class="text-pm-dark font-extrabold">accelerating delivery cadence by 30%</strong>.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Wavy Separator -->
+    <div class="w-full overflow-hidden leading-[0]">
+        <svg class="relative block w-[calc(100%+1.3px)] h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,119.26,192.51,103.5,235.48,93,279.18,74.52,321.39,56.44Z" fill="#2D334A"></path>
+        </svg>
+    </div>
+
+    <footer id="contact" class="bg-pm-dark pt-12 pb-20 px-4 text-center">
+        <div class="max-w-4xl mx-auto reveal">
+            <h2 class="text-5xl md:text-7xl font-black text-white mb-6">Let's build something <span class="text-pm-yellow transform inline-block rotate-2">epic.</span></h2>
+            <p class="text-xl text-white/70 font-medium mb-10 max-w-2xl mx-auto">
+                Ready to bring data-driven strategy and 0-to-1 execution to your product team. 
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-6">
+                <button onclick="revealAndCopyEmail(event, this)" class="flex items-center px-8 py-4 bg-pm-green border-4 border-pm-dark rounded-2xl text-xl font-bold text-pm-dark shadow-[6px_6px_0px_0px_#FFFFFF] hover:-translate-y-1 hover:shadow-[10px_10px_0px_0px_#FFFFFF] transition-all group cursor-pointer">
+                    <i class="ph-bold ph-envelope-simple text-3xl mr-3 group-hover:animate-wiggle"></i> <span class="email-text">Email Me</span>
+                </button>
+                <a href="https://www.linkedin.com/in/ajay-yadav-pm/" target="_blank" class="flex items-center px-8 py-4 bg-pm-blue border-4 border-pm-dark rounded-2xl text-xl font-bold text-pm-dark shadow-[6px_6px_0px_0px_#FFFFFF] hover:-translate-y-1 hover:shadow-[10px_10px_0px_0px_#FFFFFF] transition-all group">
+                    <i class="ph-bold ph-linkedin-logo text-3xl mr-3 group-hover:animate-wiggle"></i> LinkedIn
+                </a>
+                <button onclick="revealAndCopyPhone(event, this)" class="flex items-center px-8 py-4 bg-pm-yellow border-4 border-pm-dark rounded-2xl text-xl font-bold text-pm-dark shadow-[6px_6px_0px_0px_#FFFFFF] hover:-translate-y-1 hover:shadow-[10px_10px_0px_0px_#FFFFFF] transition-all group cursor-pointer">
+                    <i class="ph-bold ph-phone text-3xl mr-3 group-hover:animate-wiggle"></i> <span class="phone-text">Call Me</span>
+                </button>
+            </div>
+            
+            <p class="text-pm-light/50 font-bold mt-20">
+                &copy; 2026 Ajay Yadav. Built with ⚡️ and Tailwind.
+            </p>
+        </div>
+    </footer>
+
+    <div id="contact-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6">
+        <div class="absolute inset-0 bg-pm-dark/60 backdrop-blur-sm transition-opacity" onclick="closeContactModal()"></div>
+        <div class="relative bg-pm-light border-4 border-pm-dark rounded-[2rem] shadow-brutal-lg w-full max-w-md p-8 transform transition-all scale-95 opacity-0 duration-300" id="modal-content">
+            <button onclick="closeContactModal()" class="absolute top-4 right-4 w-10 h-10 bg-pm-pink border-4 border-pm-dark rounded-full flex items-center justify-center hover:bg-pm-yellow transition-colors shadow-brutal">
+                <i class="ph-bold ph-x text-pm-dark text-xl"></i>
+            </button>
+            
+            <div class="text-center mb-8 mt-2">
+                <div class="w-20 h-20 bg-pm-blue border-4 border-pm-dark rounded-2xl mx-auto flex items-center justify-center shadow-brutal transform rotate-3 mb-4">
+                    <i class="ph-fill ph-handshake text-4xl text-pm-dark"></i>
+                </div>
+                <h3 class="text-3xl font-black text-pm-dark mb-2">Let's Connect!</h3>
+                <p class="text-pm-dark/80 font-medium">I'm always open to discussing new product opportunities or a quick coffee chat.</p>
+            </div>
+            
+            <div class="space-y-4">
+                <button onclick="copyEmail(this)" class="w-full flex items-center justify-between p-4 bg-white border-4 border-pm-dark rounded-xl hover:-translate-y-1 hover:shadow-brutal transition-all group cursor-pointer">
+                    <div class="flex items-center gap-3">
+                        <i class="ph-duotone ph-copy text-2xl text-pm-green group-hover:animate-wiggle"></i>
+                        <span class="font-bold text-pm-dark">Copy Email Address</span>
+                    </div>
+                    <span class="text-sm font-bold text-pm-dark/50 bg-gray-100 px-2 py-1 rounded-md hidden copy-badge">Copied!</span>
+                </button>
+                
+                <a href="https://www.linkedin.com/in/ajay-yadav-pm/" target="_blank" class="flex items-center justify-between p-4 bg-white border-4 border-pm-dark rounded-xl hover:-translate-y-1 hover:shadow-brutal transition-all group">
+                    <div class="flex items-center gap-3">
+                        <i class="ph-fill ph-linkedin-logo text-2xl text-[#0A66C2] group-hover:animate-wiggle"></i>
+                        <span class="font-bold text-pm-dark">Connect on LinkedIn</span>
+                    </div>
+                    <i class="ph-bold ph-arrow-up-right text-pm-dark/50"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chatbot Widget -->
+    <div class="fixed bottom-6 right-6 z-[90] flex flex-col items-end">
+        <!-- Chat Window -->
+        <div id="ai-chat-window" class="hidden mb-4 w-[90vw] sm:w-[400px] h-[500px] max-h-[70vh] bg-white border-4 border-pm-dark rounded-3xl shadow-brutal-lg flex flex-col overflow-hidden transition-all duration-300 origin-bottom-right transform scale-95 opacity-0">
+            <!-- Header -->
+            <div class="bg-pm-blue border-b-4 border-pm-dark p-4 flex justify-between items-center relative overflow-hidden">
+                <div class="absolute -right-4 -top-4 text-pm-dark/10 text-6xl rotate-12"><i class="ph-fill ph-robot"></i></div>
+                <div class="flex items-center gap-3 relative z-10">
+                    <div class="w-10 h-10 bg-pm-dark rounded-full flex items-center justify-center border-2 border-white shadow-brutal">
+                        <i class="ph-fill ph-robot text-pm-yellow text-xl animate-wiggle"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-black text-pm-dark leading-tight">Ajay's AI Clone</h4>
+                        <p class="text-xs font-bold text-pm-dark/70">Ask about my experience!</p>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="relative z-10 w-8 h-8 bg-white border-2 border-pm-dark rounded-full flex items-center justify-center hover:bg-pm-pink transition-colors shadow-[2px_2px_0_#2D334A] active:translate-y-0.5 active:shadow-none">
+                    <i class="ph-bold ph-x text-pm-dark"></i>
+                </button>
+            </div>
+            
+            <!-- Messages Area -->
+            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-4 bg-pm-light bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px]">
+                <!-- Initial Message -->
+                <div class="flex gap-3">
+                    <div class="w-8 h-8 bg-pm-yellow border-2 border-pm-dark rounded-full flex-shrink-0 flex items-center justify-center mt-1">
+                        <i class="ph-fill ph-robot text-pm-dark"></i>
+                    </div>
+                    <div class="bg-white border-2 border-pm-dark rounded-2xl rounded-tl-sm p-3 shadow-[2px_2px_0_#2D334A] text-sm font-medium text-pm-dark">
+                        Hi! 👋 I'm Ajay's AI assistant, powered by Gemini. Want to know how he drove 10x MAU growth, or his approach to Agile? Ask away!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="p-3 bg-white border-t-4 border-pm-dark">
+                <form id="chat-form" onsubmit="handleChatSubmit(event)" class="flex gap-2">
+                    <input type="text" id="chat-input" placeholder="Type your question..." autocomplete="off" class="flex-1 bg-gray-100 border-2 border-pm-dark rounded-xl px-4 py-2 font-medium text-pm-dark focus:outline-none focus:bg-white focus:ring-2 focus:ring-pm-pink transition-all">
+                    <button type="submit" id="chat-submit" class="w-12 h-12 bg-pm-green border-2 border-pm-dark rounded-xl flex items-center justify-center hover:bg-pm-yellow transition-colors shadow-[2px_2px_0_#2D334A] active:translate-y-0.5 active:shadow-none group disabled:opacity-50 disabled:cursor-not-allowed">
+                        <i class="ph-bold ph-paper-plane-right text-xl text-pm-dark group-hover:animate-wiggle"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Floating Button -->
+        <button id="ai-chat-btn" onclick="toggleChat()" class="w-16 h-16 bg-pm-yellow border-4 border-pm-dark rounded-full flex items-center justify-center shadow-brutal hover:-translate-y-1 hover:shadow-brutal-lg active:translate-y-1 active:shadow-brutal transition-all group relative">
+            <div class="absolute -top-2 -right-2 w-5 h-5 bg-pm-pink border-2 border-pm-dark rounded-full animate-bounce"></div>
+            <i class="ph-duotone ph-robot text-3xl text-pm-dark group-hover:animate-wiggle"></i>
+        </button>
+    </div>
+
+    <!-- Scroll Reveal Logic & Chatbot Logic -->
+    <script>
+        // --- CHATBOT LOGIC ---
+        let chatHistory = [];
+        const systemPrompt = `You are the friendly, professional AI Assistant for Ajay Yadav, built directly into his portfolio website. Your goal is to convince recruiters and hiring managers that Ajay is an exceptional candidate for APM (Associate Product Manager) or PM roles. 
+
+Context about Ajay:
+- Current Role: Business Analyst at Ramboll India (2026-Present), acting as Product Owner for Master Intake System MVP.
+- Past Roles: Digital Product Lead (2025), Product Analyst (2022-2024).
+- Key Metrics: Drove 10x MAU growth for a legacy QA Tool, 50% increase in win probability via MS Dynamics 365 integration, 85% travel cost reduction via FSTP app, unlocked 22,000+ engineering hours annually.
+- Education: PG Certificate in Product Management (Duke CE) with specializations in AI & Growth PM; M.Tech Production Eng. (NIT Kurukshetra); B.Tech Mech Eng. (MDU).
+- Skills: Agile, Scrum, Product Strategy, User Research, Figma, Azure DevOps, SQL, Power Apps.
+- Projects: Cab-Connect (Ride Comparison App) - handled end-to-end UX, prototyping, and growth strategy.
+
+Rules for responding:
+1. Be enthusiastic, polite, and use a professional yet slightly conversational tone.
+2. Keep responses very concise (maximum 2-3 short sentences). Recruiters are busy.
+3. Highlight specific metrics (like 10x growth, 50% win probability) when relevant.
+4. Frame his Business Analyst experience as strong Product Management foundations (focus on discovery, agile execution, cross-functional leadership).
+5. If asked something completely unrelated to Ajay's career, politely steer the conversation back to his portfolio and skills.
+6. Do NOT invent information not provided in the context above.`;
+
+        function toggleChat() {
+            const chatWindow = document.getElementById('ai-chat-window');
+            if (chatWindow.classList.contains('hidden')) {
+                chatWindow.classList.remove('hidden');
+                // Small delay to allow display:block to apply before animating opacity/transform
+                setTimeout(() => {
+                    chatWindow.classList.remove('scale-95', 'opacity-0');
+                    chatWindow.classList.add('scale-100', 'opacity-100');
+                    document.getElementById('chat-input').focus();
+                }, 10);
+            } else {
+                chatWindow.classList.remove('scale-100', 'opacity-100');
+                chatWindow.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    chatWindow.classList.add('hidden');
+                }, 300); // Wait for transition to finish
+            }
+        }
+
+        function appendMessage(role, text) {
+            const messagesContainer = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            
+            if (role === 'user') {
+                messageDiv.className = 'flex gap-3 justify-end';
+                messageDiv.innerHTML = `
+                    <div class="bg-pm-dark border-2 border-pm-dark rounded-2xl rounded-tr-sm p-3 shadow-[2px_2px_0_#A7F3D0] text-sm font-medium text-white max-w-[85%]">
+                        ${text}
+                    </div>
+                `;
+            } else {
+                messageDiv.className = 'flex gap-3';
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-pm-yellow border-2 border-pm-dark rounded-full flex-shrink-0 flex items-center justify-center mt-1">
+                        <i class="ph-fill ph-robot text-pm-dark"></i>
+                    </div>
+                    <div class="bg-white border-2 border-pm-dark rounded-2xl rounded-tl-sm p-3 shadow-[2px_2px_0_#2D334A] text-sm font-medium text-pm-dark max-w-[85%]">
+                        ${text}
+                    </div>
+                `;
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function appendLoadingIndicator() {
+            const messagesContainer = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.id = 'chat-loading';
+            messageDiv.className = 'flex gap-3';
+            messageDiv.innerHTML = `
+                <div class="w-8 h-8 bg-pm-yellow border-2 border-pm-dark rounded-full flex-shrink-0 flex items-center justify-center mt-1">
+                    <i class="ph-fill ph-robot text-pm-dark animate-pulse"></i>
+                </div>
+                <div class="bg-white border-2 border-pm-dark rounded-2xl rounded-tl-sm p-3 shadow-[2px_2px_0_#2D334A] text-sm font-medium text-pm-dark max-w-[85%] flex items-center gap-1">
+                    <div class="w-2 h-2 bg-pm-dark rounded-full animate-bounce"></div>
+                    <div class="w-2 h-2 bg-pm-dark rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                    <div class="w-2 h-2 bg-pm-dark rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                </div>
+            `;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function removeLoadingIndicator() {
+            const loadingIndicator = document.getElementById('chat-loading');
+            if (loadingIndicator) {
+                loadingIndicator.remove();
+            }
+        }
+
+        async function handleChatSubmit(event) {
+            event.preventDefault();
+            const inputField = document.getElementById('chat-input');
+            const submitBtn = document.getElementById('chat-submit');
+            const messageText = inputField.value.trim();
+
+            if (!messageText) return;
+
+            // Update UI
+            appendMessage('user', messageText);
+            inputField.value = '';
+            inputField.disabled = true;
+            submitBtn.disabled = true;
+            appendLoadingIndicator();
+
+            // Prepare Payload
+            chatHistory.push({ role: "user", parts: [{ text: messageText }] });
+            
+            const payload = {
+                contents: chatHistory,
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                }
+            };
+
+            const apiKey = ""; // API key is injected by the Canvas environment
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) throw new Error('API Request Failed');
+
+                const result = await response.json();
+                const candidate = result.candidates?.[0];
+                
+                removeLoadingIndicator();
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    const replyText = candidate.content.parts[0].text;
+                    appendMessage('model', replyText);
+                    chatHistory.push({ role: "model", parts: [{ text: replyText }] });
+                } else {
+                    appendMessage('model', "I'm sorry, I'm having a little trouble connecting right now. Please try again or reach out to Ajay directly via email!");
+                }
+            } catch (error) {
+                console.error("Chat Error:", error);
+                removeLoadingIndicator();
+                appendMessage('model', "Oops, something went wrong on my end. Please email Ajay directly at mycareer.ajay@gmail.com!");
+            } finally {
+                inputField.disabled = false;
+                submitBtn.disabled = false;
+                inputField.focus();
+            }
+        }
+
+        // --- END CHATBOT LOGIC ---
+
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function revealAndCopyEmail(event, btn) {
+            event.preventDefault();
+            const textSpan = btn.querySelector('.email-text');
+            const icon = btn.querySelector('i');
+            const emailAddr = 'mycareer.ajay@gmail.com';
+            
+            copyToClipboard(emailAddr);
+            
+            textSpan.innerText = emailAddr + " (Copied!)";
+            btn.classList.replace('bg-pm-green', 'bg-pm-pink');
+            icon.classList.replace('ph-envelope-simple', 'ph-check');
+            
+            setTimeout(() => {
+                textSpan.innerText = "Email Me";
+                btn.classList.replace('bg-pm-pink', 'bg-pm-green');
+                icon.classList.replace('ph-check', 'ph-envelope-simple');
+            }, 3000);
+        }
+
+        function revealAndCopyPhone(event, btn) {
+            event.preventDefault();
+            const textSpan = btn.querySelector('.phone-text');
+            const icon = btn.querySelector('i');
+            const phoneNumber = '+91 7042316200';
+            
+            copyToClipboard(phoneNumber);
+            
+            textSpan.innerText = phoneNumber + " (Copied!)";
+            btn.classList.replace('bg-pm-yellow', 'bg-pm-green');
+            icon.classList.replace('ph-phone', 'ph-check');
+            
+            setTimeout(() => {
+                textSpan.innerText = phoneNumber;
+                btn.classList.replace('bg-pm-green', 'bg-pm-yellow');
+                icon.classList.replace('ph-check', 'ph-phone');
+            }, 3000);
+        }
+
+        function openContactModal() {
+            const modal = document.getElementById('contact-modal');
+            const modalContent = document.getElementById('modal-content');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            void modal.offsetWidth; // Trigger reflow for animation
+            modalContent.classList.remove('scale-95', 'opacity-0');
+            modalContent.classList.add('scale-100', 'opacity-100');
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contact-modal');
+            const modalContent = document.getElementById('modal-content');
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
+        function copyEmail(btn) {
+            const email = "mycareer.ajay@gmail.com";
+            const badge = btn.querySelector('.copy-badge');
+            
+            copyToClipboard(email);
+            
+            badge.classList.remove('hidden');
+            setTimeout(() => {
+                badge.classList.add('hidden');
+            }, 2000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Optional: Stop observing once revealed
+                        // observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
